@@ -594,21 +594,11 @@ footer .quicklinks ul.quicklinks li a:hover {
 @media (max-width: 767px) {
     footer .row {
         flex-direction: column !important;
-        gap: 20px;
+        gap: 20px; /* Solo gutter, sin margin */
     }
     
     footer .col-md-4 {
-        margin-bottom: 0 !important;
-    }
-    
-    /* Solo el primer elemento (social links) tiene margin-bottom */
-    footer .col-md-4.order-1 {
-        margin-bottom: 20px !important;
-    }
-    
-    footer .col-md-4.order-2, /* Copyright */
-    footer .col-md-4.order-3 { /* Quicklinks */
-        margin-bottom: 0 !important;
+        margin-bottom: 0 !important; /* Sin margin-bottom en ninguna columna */
     }
     
     footer .social-links ul.social-buttons {
