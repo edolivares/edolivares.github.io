@@ -1,13 +1,59 @@
-// Variables
+// Variables SCSS para el Portfolio de Eduardo Olivares
+// Colores y configuraciones del tema
 
-// Gray and Brand Colors for use across theme
+// ===== COLORES PRINCIPALES =====
+$theme-primary:    #fed136;  // Color original del tema (amarillo)
+$theme-danger:     #e74c3c;  // Color de peligro/error
 
-$theme-primary:    #fed136;
-$theme-danger:     #e74c3c;
+// ===== COLORES AZULES (REEMPLAZO DEL AMARILLO) =====
+$primary-blue:     #49a2e7;  // Azul principal
+$primary-blue-dark: #2c7bb6; // Azul oscuro para hover
+$primary-blue-light: #7bc4f7; // Azul claro
 
-$gray-base:			#000 !default;
-$gray-darker:		lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:			lighten($gray-base, 20%) !default;   // #333
-$gray:				lighten($gray-base, 33.5%) !default; // #555
-$gray-light:		lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:		lighten($gray-base, 93.5%) !default; // #eee
+// ===== COLORES DE TEXTO =====
+$text-muted:      #777;     // Texto muted
+$text-light:      #eeeeee;  // Texto claro
+$text-dark:       #333;     // Texto oscuro
+
+// ===== COLORES DE FONDO =====
+$bg-dark:         #222222;  // Fondo oscuro
+$bg-light-gray:   #f7f7f7;  // Fondo gris claro
+$bg-white:        #ffffff;  // Fondo blanco
+$border-light:    rgba(255, 255, 255, 0.2);  // Borde claro
+
+// ===== COLORES DE ESTADO =====
+$success-color:   #28a745;  // Color de éxito
+$warning-color:   #ffc107;  // Color de advertencia
+$info-color:      #17a2b8;  // Color de información
+
+// ===== COLORES DE GRAYSCALE =====
+$gray-base:       #000 !default;
+$gray-darker:     lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:       lighten($gray-base, 20%) !default;   // #333
+$gray:            lighten($gray-base, 33.5%) !default; // #555
+$gray-light:      lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:    lighten($gray-base, 93.5%) !default; // #eee
+
+// ===== TIPOGRAFÍA =====
+$font-family-base: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-script: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+$font-family-body: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// ===== ESPACIADO =====
+$spacing-xs:      5px;
+$spacing-sm:      10px;
+$spacing-md:      20px;
+$spacing-lg:      25px;
+$spacing-xl:      50px;
+
+// ===== BREAKPOINTS =====
+$breakpoint-sm:   576px;
+$breakpoint-md:   767px;
+$breakpoint-lg:   992px;
+$breakpoint-xl:   1200px;
+
+// ===== Z-INDEX =====
+$z-index-navbar:  1030;
+$z-index-modal:   1050;
+$z-index-dropdown: 1000;

@@ -1,0 +1,118 @@
+/**
+ * Footer Styles
+ * Estilos del footer y elementos relacionados
+ */
+
+// ===== FOOTER STYLES =====
+footer {
+  padding: $spacing-lg 0;
+  text-align: center;
+  background-color: $bg-white;
+  color: $text-dark;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .row {
+    @include flex-between;
+  }
+
+  .col-md-4 {
+    margin-bottom: 0;
+  }
+}
+
+// Copyright
+footer .copyright {
+  line-height: 40px;
+  @include heading-font;
+  text-transform: none;
+  margin: 0;
+}
+
+// Social links
+footer .social-links {
+  margin: 0;
+
+  ul.social-buttons {
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+    @include flex-center;
+    gap: 10px;
+
+    li {
+      display: inline-block;
+      margin: 0;
+
+      a {
+        display: block;
+        background-color: $bg-dark;
+        height: 40px;
+        width: 40px;
+        @include border-radius(100%);
+        font-size: 20px;
+        line-height: 40px;
+        color: $bg-white;
+        outline: none;
+        text-align: center;
+        text-decoration: none;
+        @include transition(all, 0.3s, ease);
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: $primary-blue;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+// Quicklinks
+footer .quicklinks {
+  margin: 0;
+
+  ul.quicklinks {
+    margin-bottom: 0;
+    line-height: 40px;
+    @include heading-font;
+    text-transform: none;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin: 0 10px;
+
+      a {
+        color: $text-dark;
+        text-decoration: none;
+        @include transition(color, 0.3s, ease);
+
+        &:hover {
+          color: $primary-blue;
+        }
+      }
+    }
+  }
+}
+
+// Responsive del footer
+@include respond-to(md) {
+  footer .row {
+    flex-direction: column !important;
+    gap: $spacing-md; // Solo gutter, sin margin
+  }
+
+  footer .col-md-4 {
+    margin-bottom: 0 !important; // Sin margin-bottom en ninguna columna
+  }
+
+  footer .social-links ul.social-buttons {
+    gap: 15px;
+  }
+}

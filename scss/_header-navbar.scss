@@ -1,0 +1,298 @@
+/**
+ * Header and Navigation Styles
+ * Estilos para el header y navegación - Compatible con Bootstrap 5
+ * Basado EXACTAMENTE en el diseño original de Start Bootstrap Agency
+ */
+
+// ===== CONTAINER RESPONSIVE PARA NAVBAR =====
+// En pantallas MD (≥768px y < 992px), hacer que container se comporte como container-fluid
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .navbar-custom .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+// En pantallas LG y superiores (≥992px), mantener el comportamiento normal de container
+@media (min-width: $breakpoint-lg) {
+  .navbar-custom .container {
+    max-width: 960px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: $breakpoint-xl) {
+  .navbar-custom .container {
+    max-width: 1140px !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .navbar-custom .container {
+    max-width: 1320px !important;
+  }
+}
+
+// ===== NAVBAR CUSTOM - SOLO ESTILOS VISUALES =====
+.navbar-custom {
+  background-color: $bg-dark;
+  border-color: transparent;
+}
+
+// ===== NAVBAR EN DISPOSITIVOS PEQUEÑOS Y MEDIANOS (hasta 767px) =====
+@media (max-width: 767px) {
+  .navbar-custom.affix-top {
+    background-color: $bg-dark !important;
+    border-color: transparent !important;
+  }
+
+  // Hacer que el container se comporte como container-fluid
+  .navbar-custom .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  // Hacer que los elementos del navbar-header se expandan horizontalmente
+  .navbar-custom .navbar-header {
+    @include flex-between;
+    width: 100% !important;
+    padding: 0 15px !important;
+  }
+
+  .navbar-custom .navbar-header .navbar-toggle {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    @include border-radius(15px);
+    border: 2px solid $primary-blue !important;
+  }
+
+  .navbar-custom .navbar-header .navbar-brand {
+    flex: 0 0 auto !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 1.5em !important;
+  }
+
+  // Aplicar 1.5em también al brand cuando está en estado affix-top
+  .navbar-custom.affix-top .navbar-brand {
+    font-size: 1.5em !important;
+  }
+
+  // Línea divisoria blanca cuando el menú está desplegado
+  .navbar-custom .navbar-collapse {
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    margin-top: 10px !important;
+  }
+}
+
+// ===== NAVBAR EN DISPOSITIVOS GRANDES (≥768px) =====
+@media (min-width: $breakpoint-md) {
+  .navbar-custom {
+    background-color: transparent;
+    border-color: transparent;
+    @include transition(background-color, 0.3s, ease);
+
+    &.affix-top {
+      background-color: $bg-dark;
+      border-color: transparent;
+    }
+
+    &.affix {
+      background-color: $bg-dark;
+      border-color: transparent;
+    }
+  }
+
+  .navbar-custom .navbar-brand {
+    font-family: $font-family-script;
+    color: $primary-blue;
+    @include transition(color, 0.3s, ease);
+
+    &:hover,
+    &:focus {
+      color: $primary-blue-dark;
+    }
+  }
+
+  .navbar-custom .navbar-nav {
+    margin: 0 !important;
+    padding: 15px 0 !important;
+    
+    > li {
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      
+      > a {
+        @include heading-font;
+        color: $bg-white;
+        padding: 15px 10px !important;
+        margin: 0 !important;
+        border: none !important;
+        text-align: left !important;
+        display: block !important;
+        width: 100% !important;
+        @include transition(color, 0.3s, ease);
+
+        &:hover,
+        &:focus {
+          color: $primary-blue;
+          outline: none;
+        }
+      }
+
+      &.active > a {
+        background-color: transparent;
+        color: $primary-blue;
+
+        &:hover,
+        &:focus {
+          background-color: transparent;
+          color: $primary-blue;
+        }
+      }
+    }
+  }
+}
+
+// ===== SCROLLSPY ACTIVE LINK =====
+.navbar-custom .navbar-nav > li.active > a {
+  background-color: transparent;
+  color: $primary-blue;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: $primary-blue;
+  }
+}
+
+// ===== NAVBAR TOGGLE =====
+.navbar-custom .navbar-toggle {
+  background-color: $primary-blue;
+  border-color: $primary-blue;
+  font-size: 12px;
+  @include transition(all, 0.3s, ease);
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+
+  .icon-bar {
+    background-color: $bg-white;
+    @include transition(background-color, 0.3s, ease);
+  }
+
+  &:hover .icon-bar {
+    background-color: $primary-blue;
+  }
+}
+
+// ===== NAVBAR COLLAPSE =====
+.navbar-custom .navbar-collapse {
+  border-color: $border-light;
+  @include transition(border-color, 0.3s, ease);
+
+  &.in {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+// ===== RESPONSIVE ADJUSTMENTS =====
+@media (max-width: 425px) {
+  .navbar-custom.affix-top {
+    background-color: $bg-dark !important;
+    border-color: transparent !important;
+  }
+}
+
+// ===== ESTILOS FALTANTES DEL NAVIGATION =====
+.navbar-custom .nav li a,
+.navbar-custom .navbar-toggle {
+  @include heading-font;
+  color: $bg-white;
+}
+
+.navbar-custom .nav li a {
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:hover {
+  color: $primary-blue;
+  outline: 0;
+}
+
+.navbar-custom .navbar-nav > .active > a {
+  border-radius: 0;
+  color: $bg-white;
+  background-color: $primary-blue;
+}
+
+.navbar-custom .navbar-nav > .active > a:focus,
+.navbar-custom .navbar-nav > .active > a:hover {
+  color: $bg-white;
+  background-color: $primary-blue;
+}
+
+// ===== HEADER HERO =====
+header.hero {
+  background-image: url("../images/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  @include background-cover;
+  text-align: center;
+  color: $bg-white;
+}
+
+header.hero .intro-text {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+header.hero .intro-lead-in {
+  @include serif-font;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 22px;
+  margin-bottom: 25px;
+  font-weight: normal !important;
+  text-transform: none !important;
+}
+
+header.hero .intro-heading {
+  @include heading-font;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 50px;
+  margin-bottom: 25px;
+}
+
+// ===== RESPONSIVE ADJUSTMENTS ADICIONALES =====
+@media (min-width: 768px) {
+  .navbar-custom {
+    padding: 25px 0;
+    background-color: transparent;
+    @include transition(padding, 0.3s);
+    border: none;
+  }
+
+  .navbar-custom .navbar-brand {
+    font-size: 2em;
+    @include transition(all, 0.3s);
+  }
+}

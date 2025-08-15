@@ -1,7 +1,9 @@
-// Mixins
+// Mixins SCSS para el Portfolio de Eduardo Olivares
+// Mixins existentes y nuevos para funcionalidad adicional
+
+// ===== MIXINS EXISTENTES =====
 
 // Bootstrap Button Variant
-
 @mixin button-variant($color, $background, $border) {
   color: $color;
   background-color: $background;
@@ -11,26 +13,26 @@
   &.focus {
     color: $color;
     background-color: darken($background, 10%);
-        border-color: darken($border, 25%);
+    border-color: darken($border, 25%);
   }
   &:hover {
     color: $color;
     background-color: darken($background, 10%);
-        border-color: darken($border, 12%);
+    border-color: darken($border, 12%);
   }
   &:active,
   &.active,
   .open > &.dropdown-toggle {
     color: $color;
     background-color: darken($background, 10%);
-        border-color: darken($border, 12%);
+    border-color: darken($border, 12%);
 
     &:hover,
     &:focus,
     &.focus {
       color: $color;
       background-color: darken($background, 17%);
-          border-color: darken($border, 25%);
+      border-color: darken($border, 25%);
     }
   }
   &:active,
@@ -45,7 +47,7 @@
     &:focus,
     &.focus {
       background-color: $background;
-          border-color: $border;
+      border-color: $border;
     }
   }
 
@@ -56,7 +58,6 @@
 }
 
 // Background Cover Mixin
-
 @mixin background-cover {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -65,20 +66,82 @@
 }
 
 // Font Mixins
-
 @mixin serif-font {
-  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font-family-serif;
 }
 
 @mixin script-font {
-  font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+  font-family: $font-family-script;
 }
 
 @mixin body-font {
-  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font-family-body;
 }
 
 @mixin heading-font {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font-family-base;
   text-transform: uppercase;
+}
+
+// ===== NUEVOS MIXINS =====
+
+// Transiciones suaves
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  transition: $property $duration $timing;
+  -webkit-transition: $property $duration $timing;
+  -moz-transition: $property $duration $timing;
+  -o-transition: $property $duration $timing;
+}
+
+// Sombras de caja
+@mixin box-shadow($shadow: 0 2px 4px rgba(0,0,0,0.1)) {
+  box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+}
+
+// Bordes redondeados
+@mixin border-radius($radius: 4px) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+}
+
+// Flexbox centrado
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flexbox entre elementos
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Media queries responsive
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm) { @content; }
+  }
+  @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md) { @content; }
+  }
+  @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-lg) { @content; }
+  }
+  @else if $breakpoint == xl {
+    @media (max-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Placeholder styles
+@mixin placeholder-styles {
+  &::-webkit-input-placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::placeholder { @content; }
 }

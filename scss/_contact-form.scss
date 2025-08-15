@@ -1,0 +1,101 @@
+/**
+ * Contact Form Styles
+ * Estilos para el formulario de contacto
+ */
+
+// ===== SECCIÓN DE CONTACTO =====
+#contact {
+  background-color: $bg-dark;
+  background-image: url("../images/map-image.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#contact .section-heading {
+  color: $bg-white;
+}
+
+// ===== FORMULARIO =====
+.form-group {
+  margin-bottom: $spacing-lg;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: $spacing-md;
+}
+
+.form-group input.form-control {
+  height: auto;
+}
+
+.form-group textarea.form-control {
+  height: 236px;
+}
+
+.form-control:focus {
+  border-color: $primary-blue;
+  box-shadow: none;
+}
+
+// ===== PLACEHOLDERS =====
+// Estilos específicos de placeholders de agency.css
+#contact {
+  @include placeholder-styles {
+    font-family: $font-family-base;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $text-light;
+  }
+}
+
+// ===== TEXTO MUTED VISIBLE =====
+#contact .section-subheading.text-muted {
+  color: $text-light !important;
+}
+
+// ===== VALIDACIÓN =====
+.help-block {
+  margin-top: $spacing-xs;
+  margin-bottom: $spacing-sm;
+  color: #737373;
+}
+
+.help-block.text-danger {
+  color: $theme-danger;
+}
+
+#contact .text-danger {
+  color: $theme-danger;
+}
+
+// ===== BOTÓN DE ENVÍO =====
+#contact .btn-xl {
+  background-color: $primary-blue;
+  border-color: $primary-blue;
+
+  &:hover,
+  &:focus {
+    background-color: $primary-blue-dark;
+    border-color: $primary-blue-dark;
+  }
+}
+
+// ===== MENSAJE DE ÉXITO =====
+#success {
+  color: $success-color;
+  font-weight: bold;
+  margin-bottom: $spacing-md;
+}
+
+// ===== RESPONSIVE =====
+@include respond-to(md) {
+  #contact .form-group {
+    margin-bottom: $spacing-md;
+  }
+  
+  #contact .btn-xl {
+    width: 100%;
+    margin-top: $spacing-sm;
+  }
+}

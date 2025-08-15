@@ -1,0 +1,122 @@
+/**
+ * Base SCSS - Estilos base y variables
+ * Contiene estilos generales, variables y utilidades del proyecto
+ */
+
+// ===== ESTILOS BASE =====
+body {
+  font-family: $font-family-base;
+  color: $text-dark;
+  line-height: 1.6;
+}
+
+// ===== UTILIDADES =====
+.page-scroll {
+  cursor: pointer;
+}
+
+.bg-light-gray {
+  background-color: $bg-light-gray;
+}
+
+// ===== TIPOGRAFÍA =====
+.section-heading {
+  @include heading-font;
+}
+
+.section-subheading {
+  @include serif-font;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 75px;
+}
+
+.large {
+  font-size: 18px;
+}
+
+// ===== BOTONES =====
+.btn-xl {
+  color: $bg-white;
+  background-color: $primary-blue;
+  border-color: $primary-blue;
+  @include border-radius(3px);
+  font-size: 18px;
+  padding: $spacing-md 40px;
+  @include transition(all, 0.3s, ease);
+
+  &.active,
+  &:active,
+  &:focus,
+  &:hover,
+  .open .dropdown-toggle & {
+    color: $bg-white;
+    background-color: $primary-blue-dark;
+    border-color: $primary-blue-dark;
+  }
+
+  &.disabled,
+  &.disabled.active,
+  &.disabled:active,
+  &.disabled:focus,
+  &.disabled:hover,
+  &[disabled],
+  &[disabled].active,
+  &[disabled]:active,
+  &[disabled]:focus,
+  &[disabled]:hover,
+  fieldset[disabled] &,
+  fieldset[disabled] &.active,
+  fieldset[disabled] &:active,
+  fieldset[disabled] &:focus,
+  fieldset[disabled] &:hover {
+    background-color: $primary-blue;
+    border-color: $primary-blue;
+  }
+
+  .badge {
+    color: $primary-blue;
+    background-color: $bg-white;
+  }
+}
+
+// ===== COMPATIBILIDAD CON BOOTSTRAP 5 =====
+// Asegurar que no haya text-decoration en ningún enlace
+.navbar-custom {
+  a {
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+  }
+}
+
+// ===== ELEMENTO VISUALLY-HIDDEN SIN ESPACIO =====
+.navbar-custom .visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  display: block !important;
+
+  a {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}

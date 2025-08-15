@@ -1,0 +1,44 @@
+/**
+ * Main SCSS - Archivo principal
+ * Importa todos los archivos SCSS organizados por secciones
+ * 
+ * ORDEN DE IMPORTACIÓN (respetando prioridades):
+ * 1. _variables.scss - Variables y configuraciones
+ * 2. _mixins.scss - Mixins y funciones
+ * 3. _base.scss - Estilos base y variables CSS
+ * 4. _header-navbar.scss - Header y navegación
+ * 5. _sections.scss - Secciones generales
+ * 6. _contact-form.scss - Formulario de contacto
+ * 7. _footer.scss - Footer
+ * 8. _portfolio.scss - Estilos específicos del portafolio
+ * 9. _about.scss - Estilos para la sección About
+ */
+
+// ===== IMPORTS EN ORDEN DE PRIORIDAD =====
+
+// 1. Variables y configuraciones
+@import 'variables';
+
+// 2. Mixins y funciones
+@import 'mixins';
+
+// 3. Estilos base y variables CSS
+@import 'base';
+
+// 4. Header y navegación
+@import 'header-navbar';
+
+// 5. Secciones generales
+@import 'sections';
+
+// 6. Formulario de contacto
+@import 'contact-form';
+
+// 7. Footer
+@import 'footer';
+
+// 8. Estilos específicos del portafolio
+@import 'portfolio';
+
+// 9. About - Estilos para la sección About
+@import 'about';

@@ -1,0 +1,1329 @@
+/**
+ * Base CSS - Estilos base y variables
+ * Contiene estilos generales, variables y utilidades del proyecto
+ */
+
+/* ===== VARIABLES DE COLOR ===== */
+:root {
+  --primary-blue: #49a2e7;
+  --primary-blue-dark: #3e87c0;
+  --text-dark: #333;
+  --text-muted: #777;
+  --bg-light: #eee;
+  --bg-white: #fff;
+  --bg-dark: #222;
+  --border-light: rgba(255, 255, 255, 0.02);
+}
+
+/* ===== ESTILOS BASE ===== */
+body {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ===== UTILIDADES ===== */
+.page-scroll {
+  cursor: pointer;
+}
+
+.bg-light-gray {
+  background-color: var(--bg-light);
+}
+
+/* ===== TIPOGRAFÍA ===== */
+.section-heading {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.section-subheading {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 75px;
+}
+
+.large {
+  font-size: 18px;
+}
+
+/* ===== BOTONES ===== */
+.btn-xl {
+  color: var(--bg-white);
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  border-radius: 3px;
+  font-size: 18px;
+  padding: 20px 40px;
+}
+
+.btn-xl.active,
+.btn-xl:active,
+.btn-xl:focus,
+.btn-xl:hover,
+.open .dropdown-toggle.btn-xl {
+  color: var(--bg-white);
+  background-color: var(--primary-blue-dark);
+  border-color: var(--primary-blue-dark);
+}
+
+.btn-xl.disabled,
+.btn-xl.disabled.active,
+.btn-xl.disabled:active,
+.btn-xl.disabled:focus,
+.btn-xl.disabled:hover,
+.btn-xl[disabled],
+.btn-xl[disabled].active,
+.btn-xl[disabled]:active,
+.btn-xl[disabled]:focus,
+.btn-xl[disabled]:hover,
+fieldset[disabled] .btn-xl,
+fieldset[disabled] .btn-xl.active,
+fieldset[disabled] .btn-xl:active,
+fieldset[disabled] .btn-xl:focus,
+fieldset[disabled] .btn-xl:hover {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.btn-xl .badge {
+  color: var(--primary-blue);
+  background-color: var(--bg-white);
+}
+
+/* ===== COMPATIBILIDAD CON BOOTSTRAP 5 ===== */
+/* Asegurar que no haya text-decoration en ningún enlace */
+.navbar-custom a,
+.navbar-custom a:hover,
+.navbar-custom a:focus,
+.navbar-custom a:active {
+  text-decoration: none;
+}
+
+/* ===== ELEMENTO VISUALLY-HIDDEN SIN ESPACIO ===== */
+.navbar-custom .visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  display: block !important;
+}
+
+.navbar-custom .visually-hidden a {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/**
+ * Header and Navigation Styles
+ * Estilos para el header y navegación - Compatible con Bootstrap 5
+ * Basado EXACTAMENTE en el diseño original de Start Bootstrap Agency
+ */
+
+/* ===== CONTAINER RESPONSIVE PARA NAVBAR ===== */
+/* En pantallas MD (≥768px y < 992px), hacer que container se comporte como container-fluid */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .navbar-custom .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* En pantallas LG y superiores (≥992px), mantener el comportamiento normal de container */
+@media (min-width: 992px) {
+  .navbar-custom .container {
+    max-width: 960px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar-custom .container {
+    max-width: 1140px !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .navbar-custom .container {
+    max-width: 1320px !important;
+  }
+}
+
+/* ===== NAVBAR CUSTOM - SOLO ESTILOS VISUALES ===== */
+.navbar-custom {
+  background-color: var(--bg-dark);
+  border-color: transparent;
+}
+
+/* ===== NAVBAR EN DISPOSITIVOS PEQUEÑOS Y MEDIANOS (hasta 767px) ===== */
+@media (max-width: 767px) {
+  .navbar-custom.affix-top {
+    background-color: var(--bg-dark) !important;
+    border-color: transparent !important;
+  }
+
+  /* Hacer que el container se comporte como container-fluid */
+  .navbar-custom .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Hacer que los elementos del navbar-header se expandan horizontalmente */
+  .navbar-custom .navbar-header {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 15px !important;
+  }
+
+  .navbar-custom .navbar-header .navbar-toggle {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    border-radius: 15px !important;
+    border: 2px solid var(--primary-blue) !important;
+  }
+
+  .navbar-custom .navbar-header .navbar-brand {
+    flex: 0 0 auto !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 1.5em !important;
+  }
+
+  /* Aplicar 1.5em también al brand cuando está en estado affix-top */
+  .navbar-custom.affix-top .navbar-brand {
+    font-size: 1.5em !important;
+  }
+
+  /* Línea divisoria blanca cuando el menú está desplegado */
+  .navbar-custom .navbar-collapse {
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    margin-top: 10px !important;
+  }
+
+  /* Asegurar que los enlaces de navegación tengan separaciones correctas */
+  .navbar-custom .navbar-nav {
+    margin: 0 !important;
+    padding: 15px 0 !important;
+  }
+
+  .navbar-custom .navbar-nav > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .navbar-custom .navbar-nav > li > a {
+    padding: 15px 10px !important;
+    margin: 0 !important;
+    border: none !important;
+    text-align: left !important;
+    display: block !important;
+    width: 100% !important;
+  }
+}
+
+.navbar-custom .navbar-brand {
+  color: var(--primary-blue);
+  font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+.navbar-custom .navbar-brand.active,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:hover {
+  color: var(--primary-blue);
+}
+
+.navbar-custom .navbar-collapse {
+  border-color: var(--border-light);
+}
+
+/* Botón toggle para móviles */
+.navbar-custom .navbar-toggle {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  font-size: 12px;
+}
+
+.navbar-custom .navbar-toggle:focus,
+.navbar-custom .navbar-toggle:hover {
+  background-color: var(--primary-blue);
+}
+
+/* Enlaces de navegación - SOLO COLORES Y TIPOGRAFÍA */
+.navbar-custom .nav li a,
+.navbar-custom .navbar-toggle {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--bg-white);
+  text-transform: uppercase;
+}
+
+.navbar-custom .nav li a {
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:hover {
+  color: var(--primary-blue);
+  outline: 0;
+}
+
+.navbar-custom .navbar-nav > .active > a {
+  border-radius: 0;
+  color: var(--bg-white);
+  background-color: var(--primary-blue);
+}
+
+.navbar-custom .navbar-nav > .active > a:focus,
+.navbar-custom .navbar-nav > .active > a:hover {
+  color: var(--bg-white);
+  background-color: var(--primary-blue);
+}
+
+/* ===== ESTADO INICIAL DEL NAVBAR (transparente) ===== */
+.navbar-custom.affix-top {
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-custom.affix-top .navbar-brand {
+  font-size: 2em;
+}
+
+/* ===== HEADER HERO ===== */
+header.hero {
+  background-image: url("../images/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  color: var(--bg-white);
+}
+
+header.hero .intro-text {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+header.hero .intro-lead-in {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 22px;
+  margin-bottom: 25px;
+  font-weight: normal !important;
+  text-transform: none !important;
+}
+
+header.hero .intro-heading {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 50px;
+  margin-bottom: 25px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  .navbar-custom {
+    padding: 25px 0;
+    background-color: transparent;
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+    border: none;
+  }
+
+  .navbar-custom .navbar-brand {
+    font-size: 2em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  .navbar-custom .navbar-nav > .active > a {
+    border-radius: 3px;
+  }
+
+  /* Ocultar botón toggle en pantallas grandes */
+  .navbar-custom .navbar-toggle {
+    display: none;
+  }
+
+  header.hero .intro-text {
+    padding-top: 300px;
+    padding-bottom: 200px;
+  }
+
+  header.hero .intro-lead-in {
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+    font-style: italic;
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 25px;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+
+  header.hero .intro-heading {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 75px;
+    margin-bottom: 50px;
+  }
+}
+
+/* ===== NAVBAR AFFIX (cuando se hace scroll) ===== */
+@media (min-width: 768px) {
+  .navbar-custom.affix {
+    background-color: var(--bg-dark);
+    padding: 10px 0;
+  }
+
+  .navbar-custom.affix .navbar-brand {
+    font-size: 1.5em;
+  }
+}
+
+/* ===== SEPARACIONES CORRECTAS PARA ELEMENTOS DE NAVEGACIÓN ===== */
+@media (min-width: 768px) {
+  /* Asegurar que el navbar esté expandido en desktop */
+  .navbar-custom .navbar-collapse {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Asegurar que los elementos de navegación tengan separaciones correctas */
+  .navbar-custom .navbar-nav {
+    display: block !important;
+    float: right !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .navbar-custom .navbar-nav > li {
+    display: inline-block !important;
+    float: left !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+  }
+
+  /* Asegurar padding correcto para los enlaces y alineación perfecta */
+  .navbar-custom .navbar-nav > li > a {
+    padding: 15px 20px !important;
+    line-height: 20px !important;
+    display: block !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    height: auto !important;
+    min-height: 50px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Asegurar que el brand esté perfectamente alineado */
+  .navbar-custom .navbar-brand {
+    display: block !important;
+    float: left !important;
+    height: auto !important;
+    line-height: 50px !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+  }
+
+  /* Asegurar que el navbar tenga el patrón de fondo correcto */
+  .navbar-custom.affix-top {
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    ) !important;
+    background-size: 20px 20px !important;
+  }
+
+  /* Asegurar que el container tenga el layout correcto */
+  .navbar-custom .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: auto !important;
+  }
+
+  /* Asegurar que el navbar-header esté correctamente posicionado */
+  .navbar-custom .navbar-header {
+    display: flex !important;
+    align-items: center !important;
+    height: auto !important;
+    min-height: 50px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ===== SEPARACIONES EXACTAS ENTRE ELEMENTOS DE NAVEGACIÓN ===== */
+  /* Asegurar que no haya espacios extra entre los elementos li */
+  .navbar-custom .navbar-nav > li + li {
+    margin-left: 0 !important;
+  }
+
+  /* Asegurar que los enlaces tengan el espaciado interno correcto */
+  .navbar-custom .navbar-nav > li > a {
+    margin: 0 !important;
+    border: none !important;
+    outline: none !important;
+    position: relative !important;
+  }
+
+  /* Asegurar que no haya bordes o líneas entre elementos */
+  .navbar-custom .navbar-nav > li {
+    border: none !important;
+    outline: none !important;
+  }
+
+  /* Asegurar que el navbar tenga la altura correcta para el padding deseado */
+  .navbar-custom.affix-top {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Asegurar que todos los elementos estén centrados verticalmente */
+  .navbar-custom .navbar-header,
+  .navbar-custom .navbar-nav,
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-nav > li > a {
+    vertical-align: middle !important;
+    align-items: center !important;
+  }
+}
+
+/**
+ * Sections Styles
+ * Estilos para secciones generales del sitio
+ */
+
+/* ===== SECCIÓN "¿QUIÉN SOY?" ===== */
+#whoami .team-member {
+  text-align: center;
+}
+
+#whoami .team-member img {
+  width: 225px;
+  height: 225px;
+  border: 7px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+#whoami .team-member h3 {
+  margin: 10px 0;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+#whoami .team-member p.text-muted {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+  font-style: italic;
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+#whoami .social-links {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#whoami .social-buttons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 15px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+#whoami .social-buttons li {
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+#whoami .social-buttons li a {
+  display: block;
+  background-color: var(--bg-dark);
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--bg-white);
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+#whoami .social-buttons li a:hover,
+#whoami .social-buttons li a:focus,
+#whoami .social-buttons li a:active {
+  background-color: var(--primary-blue);
+  transform: scale(1.1);
+}
+
+/* ===== SECCIÓN PORTFOLIO ===== */
+#portfolio {
+  padding: 100px 0;
+}
+
+#portfolio .section-heading {
+  margin-bottom: 15px;
+}
+
+#portfolio .section-subheading {
+  margin-bottom: 75px;
+}
+
+/* ===== SECCIONES GENERALES ===== */
+section {
+  padding: 100px 0;
+}
+
+section h2.section-heading {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+section h3.section-subheading {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 75px;
+  text-transform: none;
+  font-style: italic;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 767px) {
+  section {
+    padding: 75px 0;
+  }
+
+  section h2.section-heading {
+    font-size: 30px;
+  }
+
+  section h3.section-subheading {
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+
+  #whoami .team-member img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/**
+ * Contact Form Styles
+ * Estilos para el formulario de contacto
+ */
+
+/* ===== SECCIÓN DE CONTACTO ===== */
+#contact {
+  background-color: #222222;
+  background-image: url("../images/map-image.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#contact .section-heading {
+  color: white;
+}
+
+/* ===== FORMULARIO ===== */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 20px;
+}
+
+.form-group input.form-control {
+  height: auto;
+}
+
+.form-group textarea.form-control {
+  height: 236px;
+}
+
+.form-control:focus {
+  border-color: var(--primary-blue);
+  box-shadow: none;
+}
+
+/* ===== PLACEHOLDERS ===== */
+/* Estilos específicos de placeholders de agency.css */
+#contact ::-webkit-input-placeholder {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
+}
+
+#contact :-moz-placeholder {
+  /* Firefox 18- */
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
+}
+
+#contact ::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
+}
+
+#contact :-ms-input-placeholder {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
+}
+
+/* Placeholders modernos con variables CSS */
+#contact .form-control::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+
+/* ===== TEXTO MUTED VISIBLE ===== */
+#contact .section-subheading.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* ===== VALIDACIÓN ===== */
+.help-block {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #737373;
+}
+
+.help-block.text-danger {
+  color: #e74c3c;
+}
+
+#contact .text-danger {
+  color: #e74c3c;
+}
+
+/* ===== BOTÓN DE ENVÍO ===== */
+#contact .btn-xl {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+#contact .btn-xl:hover,
+#contact .btn-xl:focus {
+  background-color: var(--primary-blue-dark);
+  border-color: var(--primary-blue-dark);
+}
+
+/* ===== MENSAJE DE ÉXITO ===== */
+#success {
+  color: #28a745;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 767px) {
+  #contact .form-group {
+    margin-bottom: 20px;
+  }
+
+  #contact .btn-xl {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/**
+ * Footer Styles
+ * Estilos del footer y elementos relacionados
+ */
+
+/* ===== FOOTER STYLES ===== */
+footer {
+  padding: 25px 0;
+  text-align: center;
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+}
+
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer .col-md-4 {
+  margin-bottom: 0;
+}
+
+/* Copyright */
+footer .copyright {
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+  margin: 0;
+}
+
+/* Social links */
+footer .social-links {
+  margin: 0;
+}
+
+footer .social-links ul.social-buttons {
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+footer .social-links ul.social-buttons li {
+  display: inline-block;
+  margin: 0;
+}
+
+footer .social-links ul.social-buttons li a {
+  display: block;
+  background-color: var(--bg-dark);
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--bg-white);
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+footer .social-links ul.social-buttons li a:hover,
+footer .social-links ul.social-buttons li a:focus,
+footer .social-links ul.social-buttons li a:active {
+  background-color: var(--primary-blue);
+  transform: scale(1.1);
+}
+
+/* Quicklinks */
+footer .quicklinks {
+  margin: 0;
+}
+
+footer .quicklinks ul.quicklinks {
+  margin-bottom: 0;
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+  padding: 0;
+  list-style: none;
+}
+
+footer .quicklinks ul.quicklinks li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+footer .quicklinks ul.quicklinks li a {
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer .quicklinks ul.quicklinks li a:hover {
+  color: var(--primary-blue);
+}
+
+/* Responsive del footer */
+@media (max-width: 767px) {
+  footer .row {
+    flex-direction: column !important;
+    gap: 20px; /* Solo gutter, sin margin */
+  }
+
+  footer .col-md-4 {
+    margin-bottom: 0 !important; /* Sin margin-bottom en ninguna columna */
+  }
+
+  footer .social-links ul.social-buttons {
+    gap: 15px;
+  }
+}
+
+/**
+ * Portfolio CSS - Estilos específicos del portafolio
+ * Grid, hover effects, captions y modales
+ */
+
+/* ===== PORTFOLIO GRID ===== */
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.portfolio-link {
+  display: block;
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.portfolio-hover {
+  background: rgba(73, 162, 231, 0.9);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+}
+
+.portfolio-hover:hover {
+  opacity: 1;
+}
+
+.portfolio-hover-content {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  font-size: 20px;
+  text-align: center;
+  top: 50%;
+  margin-top: -12px;
+  color: white;
+}
+
+.portfolio-hover-content i {
+  margin-top: -12px;
+}
+
+.portfolio-hover-content h3,
+.portfolio-hover-content h4 {
+  margin: 0;
+}
+
+.portfolio-caption {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.portfolio-caption h4 {
+  text-transform: none;
+  margin: 0;
+  display: block;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.portfolio-caption p {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+  font-style: italic;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== ESTILOS DE MODALES DEL PORTAFOLIO ===== */
+/* Modales del portafolio usando modal-lg estándar Bootstrap 5 */
+
+/* Estilos básicos para modales del portafolio */
+.modal[id^="portfolioModal"] .modal-content {
+  /* Usar estándar Bootstrap 5 pero mantener estilos originales importantes */
+  border-radius: 0;
+  background-clip: border-box;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  min-height: 100%;
+  padding: 10px 0 30px 10px;
+  text-align: center;
+}
+
+/* Títulos de los modales */
+.modal[id^="portfolioModal"] .modal-content h2 {
+  margin-bottom: 15px;
+  font-size: 3em;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Párrafos introductorios */
+.modal[id^="portfolioModal"] .modal-content .item-intro {
+  font-style: italic;
+  margin: 20px 0 30px;
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+}
+
+/* Párrafos de contenido */
+.modal[id^="portfolioModal"] .modal-content p {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+/* Imágenes */
+.modal[id^="portfolioModal"] .modal-content img {
+  margin-bottom: 30px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Botón de cierre del proyecto */
+.modal[id^="portfolioModal"] .btn-primary {
+  color: white;
+  background-color: #49a2e7;
+  border-color: #49a2e7;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.modal[id^="portfolioModal"] .btn-primary:hover,
+.modal[id^="portfolioModal"] .btn-primary:focus,
+.modal[id^="portfolioModal"] .btn-primary:active {
+  color: white;
+  background-color: #3e87c0;
+  border-color: #3e87c0;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .modal[id^="portfolioModal"] .modal-content h2 {
+    font-size: 2em;
+  }
+}
+
+/* Estilos para enlaces dentro del modal */
+.modal[id^="portfolioModal"] .modal-content a {
+  color: #49a2e7;
+  text-decoration: none;
+}
+
+.modal[id^="portfolioModal"] .modal-content a:hover {
+  color: #3e87c0;
+  text-decoration: underline;
+}
+
+/**
+ * Timeline CSS - Estilos para la sección About con timeline
+ * Basado en el diseño original de Start Bootstrap Agency
+ */
+
+/* ===== SECCIÓN ABOUT ===== */
+.timeline-image {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-blue);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.timeline-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.timeline-image h4 {
+  color: var(--bg-white);
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+}
+
+.timeline-heading h4 {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.timeline-heading .subheading {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+  font-style: italic;
+  font-size: 18px;
+  margin: 0;
+}
+
+.timeline-body p {
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, serif;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* ===== TIMELINE BASE ===== */
+.timeline {
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+.timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: "";
+  width: 2px;
+  background-color: #9fc5e3;
+  left: 40px;
+  margin-left: -1.5px;
+}
+
+.timeline > li {
+  margin-bottom: 50px;
+  position: relative;
+  min-height: 50px;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+
+.timeline > li:after {
+  clear: both;
+}
+
+/* ===== PANELES DEL TIMELINE ===== */
+.timeline > li .timeline-panel {
+  width: 100%;
+  float: right;
+  padding: 0 20px 0 100px;
+  position: relative;
+  text-align: left;
+}
+
+.timeline > li .timeline-panel:before {
+  border-left-width: 0;
+  border-right-width: 15px;
+  left: -15px;
+  right: auto;
+}
+
+.timeline > li .timeline-panel:after {
+  border-left-width: 0;
+  border-right-width: 14px;
+  left: -14px;
+  right: auto;
+}
+
+/* ===== IMÁGENES DEL TIMELINE ===== */
+.timeline > li .timeline-image {
+  left: 0;
+  margin-left: 0;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  z-index: 100;
+  background-color: #49a2e7;
+  color: white;
+  border-radius: 100%;
+  border: 7px solid #9fc5e3;
+  text-align: center;
+}
+
+.timeline > li .timeline-image h4 {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+/* ===== TIMELINE INVERTIDO ===== */
+.timeline > li.timeline-inverted > .timeline-panel {
+  float: right;
+  text-align: left;
+  padding: 0 20px 0 100px;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:before {
+  border-left-width: 0;
+  border-right-width: 15px;
+  left: -15px;
+  right: auto;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:after {
+  border-left-width: 0;
+  border-right-width: 14px;
+  left: -14px;
+  right: auto;
+}
+
+/* ===== ÚLTIMO ELEMENTO ===== */
+.timeline > li:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== ENCABEZADOS DEL TIMELINE ===== */
+.timeline .timeline-heading h4 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.timeline .timeline-heading h4.subheading {
+  text-transform: none;
+}
+
+/* ===== CUERPO DEL TIMELINE ===== */
+.timeline .timeline-body > p,
+.timeline .timeline-body > ul {
+  margin-bottom: 0;
+}
+
+/* ===== RESPONSIVE - TABLET (≥768px) ===== */
+@media (min-width: 768px) {
+  .timeline:before {
+    left: 50%;
+  }
+
+  .timeline > li {
+    margin-bottom: 100px;
+    min-height: 100px;
+  }
+
+  .timeline > li .timeline-panel {
+    width: 41%;
+    float: left;
+    padding: 0 20px 20px 30px;
+    text-align: right;
+  }
+
+  .timeline > li .timeline-image {
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    margin-left: -50px;
+  }
+
+  .timeline > li .timeline-image h4 {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+    text-align: left;
+    padding: 0 30px 20px 20px;
+  }
+}
+
+/* ===== RESPONSIVE - DESKTOP (≥992px) ===== */
+@media (min-width: 992px) {
+  .timeline > li {
+    min-height: 150px;
+  }
+
+  .timeline > li .timeline-panel {
+    padding: 0 20px 20px;
+  }
+
+  .timeline > li .timeline-image {
+    width: 150px;
+    height: 150px;
+    margin-left: -75px;
+  }
+
+  .timeline > li .timeline-image h4 {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .timeline > li.timeline-inverted > .timeline-panel {
+    padding: 0 20px 20px;
+  }
+}
+
+/* ===== RESPONSIVE - DESKTOP LARGE (≥1200px) ===== */
+@media (min-width: 1200px) {
+  .timeline > li {
+    min-height: 170px;
+  }
+
+  .timeline > li .timeline-panel {
+    padding: 0 20px 20px 100px;
+  }
+
+  .timeline > li .timeline-image {
+    width: 170px;
+    height: 170px;
+    margin-left: -85px;
+  }
+
+  .timeline > li.timeline-inverted > .timeline-panel {
+    padding: 0 100px 20px 20px;
+  }
+}
