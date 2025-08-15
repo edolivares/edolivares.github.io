@@ -1,0 +1,130 @@
+/**
+ * Base CSS - Estilos base y variables
+ * Contiene estilos generales, variables y utilidades del proyecto
+ */
+
+/* ===== VARIABLES DE COLOR ===== */
+:root {
+    --primary-blue: #49a2e7;
+    --primary-blue-dark: #3e87c0;
+    --text-dark: #333;
+    --text-muted: #777;
+    --bg-light: #f7f7f7;
+    --bg-white: #fff;
+    --bg-dark: #222;
+    --border-light: rgba(255, 255, 255, 0.02);
+}
+
+/* ===== ESTILOS BASE ===== */
+body {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ===== UTILIDADES ===== */
+.page-scroll {
+    cursor: pointer;
+}
+
+.bg-light-gray {
+    background-color: var(--bg-light);
+}
+
+/* ===== TIPOGRAFÍA ===== */
+.section-heading {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.section-subheading {
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 75px;
+}
+
+.large {
+    font-size: 18px;
+}
+
+/* ===== BOTONES ===== */
+.btn-xl {
+    color: var(--bg-white);
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 20px 40px;
+}
+
+.btn-xl.active,
+.btn-xl:active,
+.btn-xl:focus,
+.btn-xl:hover,
+.open .dropdown-toggle.btn-xl {
+    color: var(--bg-white);
+    background-color: var(--primary-blue-dark);
+    border-color: var(--primary-blue-dark);
+}
+
+.btn-xl.disabled,
+.btn-xl.disabled.active,
+.btn-xl.disabled:active,
+.btn-xl.disabled:focus,
+.btn-xl.disabled:hover,
+.btn-xl[disabled],
+.btn-xl[disabled].active,
+.btn-xl[disabled]:active,
+.btn-xl[disabled]:focus,
+.btn-xl[disabled]:hover,
+fieldset[disabled] .btn-xl,
+fieldset[disabled] .btn-xl.active,
+fieldset[disabled] .btn-xl:active,
+fieldset[disabled] .btn-xl:focus,
+fieldset[disabled] .btn-xl:hover {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.btn-xl .badge {
+    color: var(--primary-blue);
+    background-color: var(--bg-white);
+}
+
+/* ===== COMPATIBILIDAD CON BOOTSTRAP 5 ===== */
+/* Asegurar que no haya text-decoration en ningún enlace */
+.navbar-custom a,
+.navbar-custom a:hover,
+.navbar-custom a:focus,
+.navbar-custom a:active {
+    text-decoration: none;
+}
+
+/* ===== ELEMENTO VISUALLY-HIDDEN SIN ESPACIO ===== */
+.navbar-custom .visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+    display: block !important;
+}
+
+.navbar-custom .visually-hidden a {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}

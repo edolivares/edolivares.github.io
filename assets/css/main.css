@@ -1,33 +1,36 @@
 /**
- * Main CSS - Archivo principal que importa todos los estilos CSS del proyecto
+ * Main CSS - Archivo principal
+ * Importa todos los archivos CSS organizados por secciones
  * 
- * Este archivo centraliza todos los estilos usando @import para mantener
- * la organización modular pero con un solo punto de entrada
+ * ORDEN DE IMPORTACIÓN (respetando prioridades):
+ * 1. base.css - Estilos base y variables
+ * 2. header-navbar.css - Header y navegación
+ * 3. sections.css - Secciones generales
+ * 4. contact-form.css - Formulario de contacto
+ * 5. footer.css - Footer
+ * 6. portfolio.css - Estilos específicos del portafolio
+ * 7. about.css - Estilos para la sección About
  */
 
-/* ===== IMPORTAR TODOS LOS ARCHIVOS CSS EXISTENTES ===== */
+/* ===== IMPORTS EN ORDEN DE PRIORIDAD ===== */
 
-/* 1. Estilos del header y navbar */
-@import url('header-styles.css');
+/* 1. Estilos base y variables */
+@import url('base.css');
 
-/* 2. Estilos de los modales del portafolio */
-@import url('portfolio-modals.css');
+/* 2. Header y navegación */
+@import url('header-navbar.css');
 
-/* 3. Estilos adicionales del proyecto */
-@import url('style.css');
+/* 3. Secciones generales */
+@import url('sections.css');
 
-/* 
- * ORDEN DE IMPORTACIÓN:
- * 1. header-styles.css - Header, navbar y estilos principales
- * 2. portfolio-modals.css - Estilos de los modales
- * 3. style.css - Estilos adicionales (tiene menor prioridad)
- * 
- * VENTAJAS:
- * - Un solo archivo para importar en el HTML
- * - Mantiene la organización modular existente
- * - Fácil de mantener y debuggear
- * - Orden de especificidad controlado
- * 
- * NOTA: Los estilos posteriores tienen mayor prioridad,
- * por lo que style.css puede sobrescribir estilos anteriores si es necesario
- */
+/* 4. Formulario de contacto */
+@import url('contact-form.css');
+
+/* 5. Footer */
+@import url('footer.css');
+
+/* 6. Estilos específicos del portafolio */
+@import url('portfolio.css');
+
+/* 7. About - Estilos para la sección About */
+@import url('about.css');
