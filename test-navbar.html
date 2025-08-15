@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Navbar</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link href="vendor/font-awesome/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet'>
+    
+    <!-- CSS de prueba -->
+    <style>
+        .navbar-custom {
+            background-color: #222 !important;
+            border-color: transparent !important;
+        }
+        
+        .navbar-custom .navbar-brand {
+            color: #49a2e7 !important;
+            font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;
+        }
+        
+        .navbar-custom .navbar-nav > li > a {
+            font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+            color: #fff !important;
+            text-transform: uppercase !important;
+            font-weight: 400 !important;
+            letter-spacing: 1px !important;
+        }
+        
+        .navbar-custom .navbar-toggle {
+            background-color: #49a2e7 !important;
+            border-color: #49a2e7 !important;
+            font-size: 12px !important;
+        }
+        
+        .navbar-custom .navbar-toggle:focus,
+        .navbar-custom .navbar-toggle:hover {
+            background-color: #49a2e7 !important;
+        }
+        
+        @media (min-width: 768px) {
+            .navbar-custom {
+                background-color: transparent !important;
+                padding: 25px 0 !important;
+            }
+            
+            .navbar-custom .navbar-brand {
+                font-size: 2em !important;
+            }
+            
+            .navbar-custom .navbar-toggle {
+                display: none !important;
+            }
+        }
+        
+        .navbar-custom.affix {
+            background-color: #222 !important;
+            padding: 10px 0 !important;
+        }
+        
+        .navbar-custom.affix .navbar-brand {
+            font-size: 1.5em !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-custom fixed-top affix-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button class="navbar-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span> Menú <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Edo Olivares</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" role="menubar">
+                    <li class="hidden" role="none">
+                        <a href="#page-top" role="menuitem"></a>
+                    </li>
+                    <li role="none">
+                        <a class="page-scroll" href="#portfolio" role="menuitem">Portafolio</a>
+                    </li>
+                    <li role="none">
+                        <a class="page-scroll" href="#whoami" role="menuitem">Who am I?</a>
+                    </li>
+                    <li role="none">
+                        <a class="page-scroll" href="#about" role="menuitem">About</a>
+                    </li>
+                    <li role="none">
+                        <a class="page-scroll" href="#contact" role="menuitem">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="hero" style="height: 100vh; background-color: #333; display: flex; align-items: center; justify-content: center; color: white;">
+        <div class="intro-text text-center">
+            <h1>Test Navbar</h1>
+            <p>Si puedes ver este texto, el navbar debería estar funcionando arriba</p>
+        </div>
+    </header>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript de prueba -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('mainNav');
+            
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('affix-top');
+                    navbar.classList.add('affix');
+                } else {
+                    navbar.classList.remove('affix');
+                    navbar.classList.add('affix-top');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+            
+            console.log('Navbar test cargado');
+            console.log('Navbar element:', navbar);
+            console.log('Navbar classes:', navbar.className);
+        });
+    </script>
+</body>
+</html>
