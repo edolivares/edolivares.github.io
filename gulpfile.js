@@ -1,125 +1,139 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var sass = require('gulp-sass')(require('sass'));
-var browserSync = require('browser-sync').create();
-var header = require('gulp-header');
-var cleanCSS = require('gulp-clean-css');
-var rename = require("gulp-rename");
-var uglify = require('gulp-uglify');
-var pkg = require('./package.json');
+/**
+ * Gulpfile.js - Portfolio de Eduardo Olivares
+ * Sistema de build para GitHub Pages
+ * 
+ * @author Eduardo Olivares
+ * @version 2.0.0
+ */
 
-// Set the banner content
-var banner = ['/*!\n',
-    ' * Start Bootstrap - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
-    ' * Copyright 2013-' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
-    ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n',
-    ' */\n',
-    ''
-].join('');
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const autoprefixer = require('gulp-autoprefixer');
+const cssnano = require('gulp-cssnano');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const sourcemaps = require('gulp-sourcemaps');
+const del = require('del');
+const browserSync = require('browser-sync').create();
 
-// Compile LESS files from /less into /css
-function lessTask() {
-    return gulp.src('less/agency.less')
-        .pipe(less())
-        .pipe(header(banner, {
-            pkg: pkg
-        }))
-        .pipe(gulp.dest('css'))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
+// Banner para archivos minificados
+const banner = `/**
+ * Portfolio de Eduardo Olivares
+ * https://edolivares.github.io
+ * 
+ * @author Eduardo Olivares
+ * @version 2.0.0
+ * @license MIT
+ */\n\n`;
+
+// Rutas de archivos
+const paths = {
+    scss: {
+        src: 'scss/**/*.scss',
+        dest: 'assets/css'
+    },
+    css: {
+        src: 'assets/css/*.css',
+        dest: 'assets/css' // Mismo directorio, solo minificar
+    },
+    js: {
+        src: 'assets/js/*.js',
+        dest: 'assets/js' // Mismo directorio, solo minificar
+    },
+    images: {
+        src: 'assets/images/**/*',
+        dest: 'assets/images' // Mismo directorio
+    }
+};
+
+// Limpiar archivos generados
+function clean() {
+    return del([
+        'assets/css/*.min.css',
+        'assets/js/*.min.js'
+    ]);
 }
 
-// Minify compiled CSS
+// Compilar SCSS a CSS
+function compileSass() {
+    return gulp.src(paths.scss.src)
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded',
+            includePaths: ['scss']
+        }).on('error', sass.logError))
+        .pipe(autoprefixer({
+            cascade: false,
+            grid: true
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.scss.dest))
+        .pipe(browserSync.stream());
+}
+
+// Minificar CSS (en el mismo directorio)
 function minifyCss() {
-    return gulp.src('css/agency.css')
-        .pipe(cleanCSS({
-            compatibility: 'ie8'
+    return gulp.src(paths.css.src)
+        .pipe(cssnano({
+            preset: ['default', {
+                discardComments: {
+                    removeAll: true
+                }
+            }]
         }))
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('css'))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
+        .pipe(gulp.dest(paths.css.dest));
 }
 
-// Minify JS
+// Minificar JavaScript (en el mismo directorio)
 function minifyJs() {
-    return gulp.src('js/agency.js')
-        .pipe(uglify())
-        .pipe(header(banner, {
-            pkg: pkg
+    return gulp.src(paths.js.src)
+        .pipe(uglify({
+            compress: {
+                drop_console: true
+            }
         }))
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('js'))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
+        .pipe(gulp.dest(paths.js.dest));
 }
 
-// Copy vendor libraries from /node_modules into /vendor
-function copyVendor() {
-    return gulp.src(['node_modules/bootstrap/dist/**/*', '!**/npm.js', '!**/bootstrap-theme.*', '!**/*.map'])
-        .pipe(gulp.dest('vendor/bootstrap'))
-        .pipe(gulp.src([
-            'node_modules/@fortawesome/fontawesome-free/**',
-            '!node_modules/@fortawesome/fontawesome-free/**/*.map',
-            '!node_modules/@fortawesome/fontawesome-free/.npmignore',
-            '!node_modules/@fortawesome/fontawesome-free/*.txt',
-            '!node_modules/@fortawesome/fontawesome-free/*.md',
-            '!node_modules/@fortawesome/fontawesome-free/*.json'
-        ]))
-        .pipe(gulp.dest('vendor/font-awesome'));
-}
-
-// Configure the browserSync task
-function browserSyncTask() {
+// Servidor de desarrollo
+function serve() {
     browserSync.init({
         server: {
-            baseDir: ''
+            baseDir: './'
         },
+        port: 3000,
+        open: true,
+        notify: false
     });
+
+    gulp.watch(paths.scss.src, compileSass);
+    gulp.watch(paths.css.src, minifyCss);
+    gulp.watch(paths.js.src, minifyJs);
+    gulp.watch('*.html').on('change', browserSync.reload);
 }
 
-// Watch files
-function watchFiles() {
-    gulp.watch('less/*.less', lessTask);
-    gulp.watch('css/*.css', minifyCss);
-    gulp.watch('js/*.js', minifyJs);
-    // Reloads the browser whenever HTML or JS files change
-    gulp.watch('*.html', browserSync.reload);
-    gulp.watch('js/**/*.js', browserSync.reload);
-}
+// Build completo
+const build = gulp.series(
+    clean,
+    compileSass,
+    gulp.parallel(minifyCss, minifyJs)
+);
 
-// Compiles SCSS files from /scss into /css
-// NOTE: This theme uses LESS by default. To switch to SCSS you will need to update this gulpfile by changing the 'less' tasks to run 'sass'!
-function sassTask() {
-    return gulp.src('scss/agency.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(header(banner, {
-            pkg: pkg
-        }))
-        .pipe(gulp.dest('css'))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-}
+// Build de desarrollo (solo SCSS)
+const dev = gulp.series(clean, compileSass);
 
-// Export tasks
-exports.less = lessTask;
-exports.sass = sassTask;
-exports.minifyCss = minifyCss;
-exports.minifyJs = minifyJs;
-exports.copy = copyVendor;
-exports.browserSync = browserSyncTask;
-exports.watch = watchFiles;
-
-// Default task
-exports.default = gulp.series(lessTask, minifyCss, minifyJs, copyVendor);
-
-// Dev task with browserSync
-exports.dev = gulp.series(browserSyncTask, gulp.parallel(lessTask, minifyCss, minifyJs), watchFiles);
+// Tareas exportadas
+exports.clean = clean;
+exports.sass = compileSass;
+exports.css = minifyCss;
+exports.js = minifyJs;
+exports.serve = serve;
+exports.build = build;
+exports.dev = dev;
+exports.default = build;

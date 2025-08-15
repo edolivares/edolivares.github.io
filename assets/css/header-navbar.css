@@ -190,7 +190,7 @@
 
 /* ===== HEADER HERO ===== */
 header.hero {
-    background-image: url('../../img/header-bg.jpg');
+    background-image: url('../images/header-bg.jpg');
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -396,3 +396,5 @@ header.hero .intro-heading {
         align-items: center !important;
     }
 }
+
+
