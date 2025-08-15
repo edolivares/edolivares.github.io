@@ -15,22 +15,22 @@
 /* ===== IMPORTS EN ORDEN DE PRIORIDAD ===== */
 
 /* 1. Estilos base y variables */
-@import url('base.css');
+@import url("base.css");
 
 /* 2. Header y navegación */
-@import url('header-navbar.css');
+@import url("header-navbar.css");
 
 /* 3. Secciones generales */
-@import url('sections.css');
+@import url("sections.css");
 
 /* 4. Formulario de contacto */
-@import url('contact-form.css');
+@import url("contact-form.css");
 
 /* 5. Footer */
-@import url('footer.css');
+@import url("footer.css");
 
 /* 6. Estilos específicos del portafolio */
-@import url('portfolio.css');
+@import url("portfolio.css");
 
 /* 7. About - Estilos para la sección About */
-@import url('about.css');
+@import url("about.css");

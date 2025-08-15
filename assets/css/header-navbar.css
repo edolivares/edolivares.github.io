@@ -7,394 +7,396 @@
 /* ===== CONTAINER RESPONSIVE PARA NAVBAR ===== */
 /* En pantallas MD (≥768px y < 992px), hacer que container se comporte como container-fluid */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .navbar-custom .container {
-        max-width: none !important;
-        width: 100% !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
+  .navbar-custom .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
 
 /* En pantallas LG y superiores (≥992px), mantener el comportamiento normal de container */
 @media (min-width: 992px) {
-    .navbar-custom .container {
-        max-width: 960px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
+  .navbar-custom .container {
+    max-width: 960px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
 @media (min-width: 1200px) {
-    .navbar-custom .container {
-        max-width: 1140px !important;
-    }
+  .navbar-custom .container {
+    max-width: 1140px !important;
+  }
 }
 
 @media (min-width: 1400px) {
-    .navbar-custom .container {
-        max-width: 1320px !important;
-    }
+  .navbar-custom .container {
+    max-width: 1320px !important;
+  }
 }
 
 /* ===== NAVBAR CUSTOM - SOLO ESTILOS VISUALES ===== */
 .navbar-custom {
-    background-color: var(--bg-dark);
-    border-color: transparent;
+  background-color: var(--bg-dark);
+  border-color: transparent;
 }
 
 /* ===== NAVBAR EN DISPOSITIVOS PEQUEÑOS Y MEDIANOS (hasta 767px) ===== */
 @media (max-width: 767px) {
-    .navbar-custom.affix-top {
-        background-color: var(--bg-dark) !important;
-        border-color: transparent !important;
-    }
-    
-    /* Hacer que el container se comporte como container-fluid */
-    .navbar-custom .container {
-        max-width: none !important;
-        width: 100% !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    
-    /* Hacer que los elementos del navbar-header se expandan horizontalmente */
-    .navbar-custom .navbar-header {
-        display: flex !important;
-        width: 100% !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 0 15px !important;
-    }
-    
-    .navbar-custom .navbar-header .navbar-toggle {
-        flex: 0 0 auto !important;
-        margin: 0 !important;
-        padding: 8px 12px !important;
-        border-radius: 15px !important;
-        border: 2px solid var(--primary-blue) !important;
-    }
-    
-    .navbar-custom .navbar-header .navbar-brand {
-        flex: 0 0 auto !important;
-        text-align: left !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 1.5em !important;
-    }
-    
-    /* Aplicar 1.5em también al brand cuando está en estado affix-top */
-    .navbar-custom.affix-top .navbar-brand {
-        font-size: 1.5em !important;
-    }
-    
-    /* Línea divisoria blanca cuando el menú está desplegado */
-    .navbar-custom .navbar-collapse {
-        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-        margin-top: 10px !important;
-    }
-    
-    /* Asegurar que los enlaces de navegación tengan separaciones correctas */
-    .navbar-custom .navbar-nav {
-        margin: 0 !important;
-        padding: 15px !important;
-    }
-    
-    .navbar-custom .navbar-nav > li {
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-    }
-    
-    .navbar-custom .navbar-nav > li > a {
-        padding: 15px 0 !important;
-        margin: 0 !important;
-        border: none !important;
-        text-align: left !important;
-        display: block !important;
-        width: 100% !important;
-    }
+  .navbar-custom.affix-top {
+    background-color: var(--bg-dark) !important;
+    border-color: transparent !important;
+  }
+
+  /* Hacer que el container se comporte como container-fluid */
+  .navbar-custom .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Hacer que los elementos del navbar-header se expandan horizontalmente */
+  .navbar-custom .navbar-header {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 15px !important;
+  }
+
+  .navbar-custom .navbar-header .navbar-toggle {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    border-radius: 15px !important;
+    border: 2px solid var(--primary-blue) !important;
+  }
+
+  .navbar-custom .navbar-header .navbar-brand {
+    flex: 0 0 auto !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 1.5em !important;
+  }
+
+  /* Aplicar 1.5em también al brand cuando está en estado affix-top */
+  .navbar-custom.affix-top .navbar-brand {
+    font-size: 1.5em !important;
+  }
+
+  /* Línea divisoria blanca cuando el menú está desplegado */
+  .navbar-custom .navbar-collapse {
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    margin-top: 10px !important;
+  }
+
+  /* Asegurar que los enlaces de navegación tengan separaciones correctas */
+  .navbar-custom .navbar-nav {
+    margin: 0 !important;
+    padding: 15px 0 !important;
+  }
+
+  .navbar-custom .navbar-nav > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .navbar-custom .navbar-nav > li > a {
+    padding: 15px 10px !important;
+    margin: 0 !important;
+    border: none !important;
+    text-align: left !important;
+    display: block !important;
+    width: 100% !important;
+  }
 }
 
 .navbar-custom .navbar-brand {
-    color: var(--primary-blue);
-    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+  color: var(--primary-blue);
+  font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
 
 .navbar-custom .navbar-brand.active,
 .navbar-custom .navbar-brand:active,
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .navbar-brand:hover {
-    color: var(--primary-blue);
+  color: var(--primary-blue);
 }
 
 .navbar-custom .navbar-collapse {
-    border-color: var(--border-light);
+  border-color: var(--border-light);
 }
 
 /* Botón toggle para móviles */
 .navbar-custom .navbar-toggle {
-    background-color: var(--primary-blue);
-    border-color: var(--primary-blue);
-    font-size: 12px;
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  font-size: 12px;
 }
 
 .navbar-custom .navbar-toggle:focus,
 .navbar-custom .navbar-toggle:hover {
-    background-color: var(--primary-blue);
+  background-color: var(--primary-blue);
 }
 
 /* Enlaces de navegación - SOLO COLORES Y TIPOGRAFÍA */
 .navbar-custom .nav li a,
 .navbar-custom .navbar-toggle {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: var(--bg-white);
-    text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--bg-white);
+  text-transform: uppercase;
 }
 
 .navbar-custom .nav li a {
-    font-weight: 400;
-    letter-spacing: 1px;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 .navbar-custom .nav li a:focus,
 .navbar-custom .nav li a:hover {
-    color: var(--primary-blue);
-    outline: 0;
+  color: var(--primary-blue);
+  outline: 0;
 }
 
 .navbar-custom .navbar-nav > .active > a {
-    border-radius: 0;
-    color: var(--bg-white);
-    background-color: var(--primary-blue);
+  border-radius: 0;
+  color: var(--bg-white);
+  background-color: var(--primary-blue);
 }
 
 .navbar-custom .navbar-nav > .active > a:focus,
 .navbar-custom .navbar-nav > .active > a:hover {
-    color: var(--bg-white);
-    background-color: var(--primary-blue);
+  color: var(--bg-white);
+  background-color: var(--primary-blue);
 }
 
 /* ===== ESTADO INICIAL DEL NAVBAR (transparente) ===== */
 .navbar-custom.affix-top {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 .navbar-custom.affix-top .navbar-brand {
-    font-size: 2em;
+  font-size: 2em;
 }
 
 /* ===== HEADER HERO ===== */
 header.hero {
-    background-image: url('../images/header-bg.jpg');
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    text-align: center;
-    color: var(--bg-white);
+  background-image: url("../images/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  color: var(--bg-white);
 }
 
 header.hero .intro-text {
-    padding-top: 100px;
-    padding-bottom: 50px;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
 header.hero .intro-lead-in {
-    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
-    font-style: italic;
-    font-size: 22px;
-    line-height: 22px;
-    margin-bottom: 25px;
-    font-weight: normal !important;
-    text-transform: none !important;
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 22px;
+  margin-bottom: 25px;
+  font-weight: normal !important;
+  text-transform: none !important;
 }
 
 header.hero .intro-heading {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 50px;
-    line-height: 50px;
-    margin-bottom: 25px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 50px;
+  margin-bottom: 25px;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (min-width: 768px) {
-    .navbar-custom {
-        padding: 25px 0;
-        background-color: transparent;
-        -webkit-transition: padding 0.3s;
-        -moz-transition: padding 0.3s;
-        transition: padding 0.3s;
-        border: none;
-    }
-    
-    .navbar-custom .navbar-brand {
-        font-size: 2em;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        transition: all 0.3s;
-    }
-    
-    .navbar-custom .navbar-nav > .active > a {
-        border-radius: 3px;
-    }
-    
-    /* Ocultar botón toggle en pantallas grandes */
-    .navbar-custom .navbar-toggle {
-        display: none;
-    }
-    
-    header.hero .intro-text {
-        padding-top: 300px;
-        padding-bottom: 200px;
-    }
-    
-    header.hero .intro-lead-in {
-        font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
-        font-style: italic;
-        font-size: 40px;
-        line-height: 40px;
-        margin-bottom: 25px;
-        font-weight: normal !important;
-        text-transform: none !important;
-    }
-    
-    header.hero .intro-heading {
-        font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 75px;
-        line-height: 75px;
-        margin-bottom: 50px;
-    }
+  .navbar-custom {
+    padding: 25px 0;
+    background-color: transparent;
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+    border: none;
+  }
+
+  .navbar-custom .navbar-brand {
+    font-size: 2em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  .navbar-custom .navbar-nav > .active > a {
+    border-radius: 3px;
+  }
+
+  /* Ocultar botón toggle en pantallas grandes */
+  .navbar-custom .navbar-toggle {
+    display: none;
+  }
+
+  header.hero .intro-text {
+    padding-top: 300px;
+    padding-bottom: 200px;
+  }
+
+  header.hero .intro-lead-in {
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+    font-style: italic;
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 25px;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+
+  header.hero .intro-heading {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 75px;
+    margin-bottom: 50px;
+  }
 }
 
 /* ===== NAVBAR AFFIX (cuando se hace scroll) ===== */
 @media (min-width: 768px) {
-    .navbar-custom.affix {
-        background-color: var(--bg-dark);
-        padding: 10px 0;
-    }
-    
-    .navbar-custom.affix .navbar-brand {
-        font-size: 1.5em;
-    }
+  .navbar-custom.affix {
+    background-color: var(--bg-dark);
+    padding: 10px 0;
+  }
+
+  .navbar-custom.affix .navbar-brand {
+    font-size: 1.5em;
+  }
 }
 
 /* ===== SEPARACIONES CORRECTAS PARA ELEMENTOS DE NAVEGACIÓN ===== */
 @media (min-width: 768px) {
-    /* Asegurar que el navbar esté expandido en desktop */
-    .navbar-custom .navbar-collapse {
-        display: block !important;
-        height: auto !important;
-        overflow: visible !important;
-    }
-    
-    /* Asegurar que los elementos de navegación tengan separaciones correctas */
-    .navbar-custom .navbar-nav {
-        display: block !important;
-        float: right !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    .navbar-custom .navbar-nav > li {
-        display: inline-block !important;
-        float: left !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        position: relative !important;
-    }
-    
-    /* Asegurar padding correcto para los enlaces y alineación perfecta */
-    .navbar-custom .navbar-nav > li > a {
-        padding: 15px 20px !important;
-        line-height: 20px !important;
-        display: block !important;
-        text-align: center !important;
-        vertical-align: middle !important;
-        height: auto !important;
-        min-height: 50px !important;
-        box-sizing: border-box !important;
-    }
-    
-    /* Asegurar que el brand esté perfectamente alineado */
-    .navbar-custom .navbar-brand {
-        display: block !important;
-        float: left !important;
-        height: auto !important;
-        line-height: 50px !important;
-        margin: 0 !important;
-        vertical-align: middle !important;
-    }
-    
-    /* Asegurar que el navbar tenga el patrón de fondo correcto */
-    .navbar-custom.affix-top {
-        background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px) !important;
-        background-size: 20px 20px !important;
-    }
-    
-    /* Asegurar que el container tenga el layout correcto */
-    .navbar-custom .container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        height: auto !important;
-    }
-    
-    /* Asegurar que el navbar-header esté correctamente posicionado */
-    .navbar-custom .navbar-header {
-        display: flex !important;
-        align-items: center !important;
-        height: auto !important;
-        min-height: 50px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    /* ===== SEPARACIONES EXACTAS ENTRE ELEMENTOS DE NAVEGACIÓN ===== */
-    /* Asegurar que no haya espacios extra entre los elementos li */
-    .navbar-custom .navbar-nav > li + li {
-        margin-left: 0 !important;
-    }
-    
-    /* Asegurar que los enlaces tengan el espaciado interno correcto */
-    .navbar-custom .navbar-nav > li > a {
-        margin: 0 !important;
-        border: none !important;
-        outline: none !important;
-        position: relative !important;
-    }
-    
-    /* Asegurar que no haya bordes o líneas entre elementos */
-    .navbar-custom .navbar-nav > li {
-        border: none !important;
-        outline: none !important;
-    }
-    
-    /* Asegurar que el navbar tenga la altura correcta para el padding deseado */
-    .navbar-custom.affix-top {
-        display: flex !important;
-        align-items: center !important;
-    }
-    
-    /* Asegurar que todos los elementos estén centrados verticalmente */
-    .navbar-custom .navbar-header,
-    .navbar-custom .navbar-nav,
-    .navbar-custom .navbar-brand,
-    .navbar-custom .navbar-nav > li > a {
-        vertical-align: middle !important;
-        align-items: center !important;
-    }
+  /* Asegurar que el navbar esté expandido en desktop */
+  .navbar-custom .navbar-collapse {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Asegurar que los elementos de navegación tengan separaciones correctas */
+  .navbar-custom .navbar-nav {
+    display: block !important;
+    float: right !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .navbar-custom .navbar-nav > li {
+    display: inline-block !important;
+    float: left !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+  }
+
+  /* Asegurar padding correcto para los enlaces y alineación perfecta */
+  .navbar-custom .navbar-nav > li > a {
+    padding: 15px 20px !important;
+    line-height: 20px !important;
+    display: block !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    height: auto !important;
+    min-height: 50px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Asegurar que el brand esté perfectamente alineado */
+  .navbar-custom .navbar-brand {
+    display: block !important;
+    float: left !important;
+    height: auto !important;
+    line-height: 50px !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+  }
+
+  /* Asegurar que el navbar tenga el patrón de fondo correcto */
+  .navbar-custom.affix-top {
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    ) !important;
+    background-size: 20px 20px !important;
+  }
+
+  /* Asegurar que el container tenga el layout correcto */
+  .navbar-custom .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: auto !important;
+  }
+
+  /* Asegurar que el navbar-header esté correctamente posicionado */
+  .navbar-custom .navbar-header {
+    display: flex !important;
+    align-items: center !important;
+    height: auto !important;
+    min-height: 50px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ===== SEPARACIONES EXACTAS ENTRE ELEMENTOS DE NAVEGACIÓN ===== */
+  /* Asegurar que no haya espacios extra entre los elementos li */
+  .navbar-custom .navbar-nav > li + li {
+    margin-left: 0 !important;
+  }
+
+  /* Asegurar que los enlaces tengan el espaciado interno correcto */
+  .navbar-custom .navbar-nav > li > a {
+    margin: 0 !important;
+    border: none !important;
+    outline: none !important;
+    position: relative !important;
+  }
+
+  /* Asegurar que no haya bordes o líneas entre elementos */
+  .navbar-custom .navbar-nav > li {
+    border: none !important;
+    outline: none !important;
+  }
+
+  /* Asegurar que el navbar tenga la altura correcta para el padding deseado */
+  .navbar-custom.affix-top {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Asegurar que todos los elementos estén centrados verticalmente */
+  .navbar-custom .navbar-header,
+  .navbar-custom .navbar-nav,
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-nav > li > a {
+    vertical-align: middle !important;
+    align-items: center !important;
+  }
 }
-
-

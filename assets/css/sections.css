@@ -5,121 +5,120 @@
 
 /* ===== SECCIÓN "¿QUIÉN SOY?" ===== */
 #whoami .team-member {
-    text-align: center;
+  text-align: center;
 }
 
 #whoami .team-member img {
-    width: 225px;
-    height: 225px;
-    border: 7px solid rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  width: 225px;
+  height: 225px;
+  border: 7px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 #whoami .team-member h3 {
-    margin: 10px 0;
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 700;
+  margin: 10px 0;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
 }
 
 #whoami .team-member p.text-muted {
-    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
-    font-style: italic;
-    font-size: 15px;
-    margin: 5px 0;
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, serif;
+  font-style: italic;
+  font-size: 15px;
+  margin: 5px 0;
 }
 
 #whoami .social-links {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 #whoami .social-buttons {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 15px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 15px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
 #whoami .social-buttons li {
-    display: inline-block !important;
-    margin: 0 !important;
+  display: inline-block !important;
+  margin: 0 !important;
 }
 
 #whoami .social-buttons li a {
-    display: block;
-    background-color: var(--bg-dark);
-    height: 40px;
-    width: 40px;
-    border-radius: 100%;
-    font-size: 20px;
-    line-height: 40px;
-    color: var(--bg-white);
-    outline: none;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.3s;
+  display: block;
+  background-color: var(--bg-dark);
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--bg-white);
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
 #whoami .social-buttons li a:hover,
 #whoami .social-buttons li a:focus,
 #whoami .social-buttons li a:active {
-    background-color: var(--primary-blue);
-    transform: scale(1.1);
+  background-color: var(--primary-blue);
+  transform: scale(1.1);
 }
 
 /* ===== SECCIÓN PORTFOLIO ===== */
 #portfolio {
-    padding: 100px 0;
+  padding: 100px 0;
 }
 
 #portfolio .section-heading {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 #portfolio .section-subheading {
-    margin-bottom: 75px;
+  margin-bottom: 75px;
 }
 
 /* ===== SECCIONES GENERALES ===== */
 section {
-    padding: 100px 0;
+  padding: 100px 0;
 }
 
 section h2.section-heading {
-    font-size: 40px;
-    margin-top: 0;
-    margin-bottom: 15px;
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
 }
 
 section h3.section-subheading {
-    font-size: 16px;
-    font-weight: 400;
-    margin-bottom: 75px;
-    text-transform: none;
-    font-style: italic;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 75px;
+  text-transform: none;
+  font-style: italic;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 767px) {
-    section {
-        padding: 75px 0;
-    }
-    
-    section h2.section-heading {
-        font-size: 30px;
-    }
-    
-    section h3.section-subheading {
-        font-size: 14px;
-        margin-bottom: 50px;
-    }
-    
-    #whoami .team-member img {
-        width: 180px;
-        height: 180px;
-    }
+  section {
+    padding: 75px 0;
+  }
+
+  section h2.section-heading {
+    font-size: 30px;
+  }
+
+  section h3.section-subheading {
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+
+  #whoami .team-member img {
+    width: 180px;
+    height: 180px;
+  }
 }

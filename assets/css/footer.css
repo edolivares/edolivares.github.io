@@ -5,122 +5,122 @@
 
 /* ===== FOOTER STYLES ===== */
 footer {
-    padding: 25px 0;
-    text-align: center;
-    background-color: var(--bg-white);
-    color: var(--text-dark);
+  padding: 25px 0;
+  text-align: center;
+  background-color: var(--bg-white);
+  color: var(--text-dark);
 }
 
 footer .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 footer .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 footer .col-md-4 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* Copyright */
 footer .copyright {
-    line-height: 40px;
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    text-transform: none;
-    margin: 0;
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+  margin: 0;
 }
 
 /* Social links */
 footer .social-links {
-    margin: 0;
+  margin: 0;
 }
 
 footer .social-links ul.social-buttons {
-    margin-bottom: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 footer .social-links ul.social-buttons li {
-    display: inline-block;
-    margin: 0;
+  display: inline-block;
+  margin: 0;
 }
 
 footer .social-links ul.social-buttons li a {
-    display: block;
-    background-color: var(--bg-dark);
-    height: 40px;
-    width: 40px;
-    border-radius: 100%;
-    font-size: 20px;
-    line-height: 40px;
-    color: var(--bg-white);
-    outline: none;
-    text-align: center;
-    text-decoration: none;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
+  display: block;
+  background-color: var(--bg-dark);
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--bg-white);
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 footer .social-links ul.social-buttons li a:hover,
 footer .social-links ul.social-buttons li a:focus,
 footer .social-links ul.social-buttons li a:active {
-    background-color: var(--primary-blue);
-    transform: scale(1.1);
+  background-color: var(--primary-blue);
+  transform: scale(1.1);
 }
 
 /* Quicklinks */
 footer .quicklinks {
-    margin: 0;
+  margin: 0;
 }
 
 footer .quicklinks ul.quicklinks {
-    margin-bottom: 0;
-    line-height: 40px;
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    text-transform: none;
-    padding: 0;
-    list-style: none;
+  margin-bottom: 0;
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+  padding: 0;
+  list-style: none;
 }
 
 footer .quicklinks ul.quicklinks li {
-    display: inline-block;
-    margin: 0 10px;
+  display: inline-block;
+  margin: 0 10px;
 }
 
 footer .quicklinks ul.quicklinks li a {
-    color: var(--text-dark);
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 footer .quicklinks ul.quicklinks li a:hover {
-    color: var(--primary-blue);
+  color: var(--primary-blue);
 }
 
 /* Responsive del footer */
 @media (max-width: 767px) {
-    footer .row {
-        flex-direction: column !important;
-        gap: 20px; /* Solo gutter, sin margin */
-    }
-    
-    footer .col-md-4 {
-        margin-bottom: 0 !important; /* Sin margin-bottom en ninguna columna */
-    }
-    
-    footer .social-links ul.social-buttons {
-        gap: 15px;
-    }
+  footer .row {
+    flex-direction: column !important;
+    gap: 20px; /* Solo gutter, sin margin */
+  }
+
+  footer .col-md-4 {
+    margin-bottom: 0 !important; /* Sin margin-bottom en ninguna columna */
+  }
+
+  footer .social-links ul.social-buttons {
+    gap: 15px;
+  }
 }

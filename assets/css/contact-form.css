@@ -5,124 +5,124 @@
 
 /* ===== SECCIÓN DE CONTACTO ===== */
 #contact {
-    background-color: #222222;
-    background-image: url('../images/map-image.png');
-    background-position: center;
-    background-repeat: no-repeat;
+  background-color: #222222;
+  background-image: url("../images/map-image.png");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #contact .section-heading {
-    color: white;
+  color: white;
 }
 
 /* ===== FORMULARIO ===== */
 .form-group {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .form-group input,
 .form-group textarea {
-    padding: 20px;
+  padding: 20px;
 }
 
 .form-group input.form-control {
-    height: auto;
+  height: auto;
 }
 
 .form-group textarea.form-control {
-    height: 236px;
+  height: 236px;
 }
 
 .form-control:focus {
-    border-color: var(--primary-blue);
-    box-shadow: none;
+  border-color: var(--primary-blue);
+  box-shadow: none;
 }
 
 /* ===== PLACEHOLDERS ===== */
 /* Estilos específicos de placeholders de agency.css */
 #contact ::-webkit-input-placeholder {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #eeeeee;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
 }
 
 #contact :-moz-placeholder {
-    /* Firefox 18- */
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #eeeeee;
+  /* Firefox 18- */
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
 }
 
 #contact ::-moz-placeholder {
-    /* Firefox 19+ */
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #eeeeee;
+  /* Firefox 19+ */
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
 }
 
 #contact :-ms-input-placeholder {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #eeeeee;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
 }
 
 /* Placeholders modernos con variables CSS */
 #contact .form-control::placeholder {
-    color: var(--text-muted) !important;
-    opacity: 1 !important;
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
 }
 
 /* ===== TEXTO MUTED VISIBLE ===== */
 #contact .section-subheading.text-muted {
-    color: var(--text-muted) !important;
+  color: var(--text-muted) !important;
 }
 
 /* ===== VALIDACIÓN ===== */
 .help-block {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    color: #737373;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #737373;
 }
 
 .help-block.text-danger {
-    color: #e74c3c;
+  color: #e74c3c;
 }
 
 #contact .text-danger {
-    color: #e74c3c;
+  color: #e74c3c;
 }
 
 /* ===== BOTÓN DE ENVÍO ===== */
 #contact .btn-xl {
-    background-color: var(--primary-blue);
-    border-color: var(--primary-blue);
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
 }
 
 #contact .btn-xl:hover,
 #contact .btn-xl:focus {
-    background-color: var(--primary-blue-dark);
-    border-color: var(--primary-blue-dark);
+  background-color: var(--primary-blue-dark);
+  border-color: var(--primary-blue-dark);
 }
 
 /* ===== MENSAJE DE ÉXITO ===== */
 #success {
-    color: #28a745;
-    font-weight: bold;
-    margin-bottom: 20px;
+  color: #28a745;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 767px) {
-    #contact .form-group {
-        margin-bottom: 20px;
-    }
-    
-    #contact .btn-xl {
-        width: 100%;
-        margin-top: 10px;
-    }
+  #contact .form-group {
+    margin-bottom: 20px;
+  }
+
+  #contact .btn-xl {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
