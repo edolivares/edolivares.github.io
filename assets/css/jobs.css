@@ -143,31 +143,31 @@
 }
 
 /* Estilos específicos del modal */
-#experienceModal1 .experience-header h2 {
+.experience-modal .experience-header h2 {
   color: #333;
   margin-bottom: 10px;
 }
 
-#experienceModal1 .experience-header h3 {
+.experience-modal .experience-header h3 {
   color: #007bff;
   font-size: 20px;
   margin-bottom: 15px;
 }
 
-#experienceModal1 .experience-header p {
+.experience-modal .experience-header p {
   color: #6c757d;
   font-size: 16px;
   margin-bottom: 20px;
 }
 
-#experienceModal1 .experience-details h4 {
+.experience-modal .experience-details h4 {
   color: #333;
   margin-bottom: 15px;
   font-size: 16px;
   font-weight: 600;
 }
 
-#experienceModal1 .experience-details ul {
+.experience-modal .experience-details ul {
   color: #555;
   line-height: 1.8;
   padding-left: 20px;
@@ -175,21 +175,21 @@
 }
 
 /* Espaciado adicional para el contenido de la modal */
-#experienceModal1 .experience-details .row {
+.experience-modal .experience-details .row {
   margin-bottom: 25px;
 }
 
-#experienceModal1 .experience-details .col-12 {
+.experience-modal .experience-details .col-12 {
   padding: 0 30px;
 }
 
 /* Padding adicional para el header de la modal */
-#experienceModal1 .experience-header {
+.experience-modal .experience-header {
   padding: 0 30px;
 }
 
 /* Padding para el body completo de la modal */
-#experienceModal1 .modal-body {
+.experience-modal .modal-body {
   padding: 30px;
 }
 
