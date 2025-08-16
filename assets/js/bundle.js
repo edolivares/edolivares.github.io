@@ -1,3 +1,4 @@
+/* === vanilla-functions.js === */
 /**
  * Vanilla Functions - Funciones JavaScript nativas que reemplazan jQuery
  * Incluye: scroll suave, scrollspy, navegación responsive, formulario de contacto
@@ -384,6 +385,8 @@ function initAll() {
 
 // Inicializar automáticamente
 initVanillaFunctions();
+
+/* === header-behavior.js === */
 /**
  * Header Behavior JavaScript
  * Maneja el comportamiento del navbar y la funcionalidad page-scroll
@@ -491,6 +494,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ejecutar una vez al cargar para establecer el estado inicial
     updateActiveNavItem();
 });
+
+/* === footer-functions.js === */
 /**
  * Footer Functions - Funciones específicas del footer
  * Incluye la actualización automática del año del copyright
@@ -517,6 +522,8 @@ if (typeof module !== 'undefined' && module.exports) {
         updateCopyrightYear
     };
 }
+
+/* === main.js === */
 /**
  * Main JavaScript - Archivo principal de JavaScript
  * Importa todos los archivos JavaScript organizados por funcionalidad
@@ -569,3 +576,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Pequeño delay para asegurar que todos los imports estén cargados
     setTimeout(initializeApp, 100);
 });
+

@@ -1,3 +1,4 @@
+/* === base.css === */
 /**
  * Base CSS - Estilos base y variables
  * Contiene estilos generales, variables y utilidades del proyecto
@@ -129,6 +130,8 @@ fieldset[disabled] .btn-xl:hover {
   border: 0 !important;
 }
 
+
+/* === header-navbar.css === */
 /**
  * Header and Navigation Styles
  * Estilos para el header y navegación - Compatible con Bootstrap 5
@@ -532,6 +535,8 @@ header.hero .intro-heading {
   }
 }
 
+
+/* === sections.css === */
 /**
  * Sections Styles
  * Estilos para secciones generales del sitio
@@ -657,6 +662,8 @@ section h3.section-subheading {
   }
 }
 
+
+/* === contact-form.css === */
 /**
  * Contact Form Styles
  * Estilos para el formulario de contacto
@@ -786,6 +793,8 @@ section h3.section-subheading {
   }
 }
 
+
+/* === footer.css === */
 /**
  * Footer Styles
  * Estilos del footer y elementos relacionados
@@ -913,6 +922,8 @@ footer .quicklinks ul.quicklinks li a:hover {
   }
 }
 
+
+/* === portfolio.css === */
 /**
  * Portfolio CSS - Estilos específicos del portafolio
  * Grid, hover effects, captions y modales
@@ -1072,6 +1083,8 @@ footer .quicklinks ul.quicklinks li a:hover {
   text-decoration: underline;
 }
 
+
+/* === about.css === */
 /**
  * Timeline CSS - Estilos para la sección About con timeline
  * Basado en el diseño original de Start Bootstrap Agency
@@ -1327,3 +1340,5 @@ footer .quicklinks ul.quicklinks li a:hover {
     padding: 0 100px 20px 20px;
   }
 }
+
+
