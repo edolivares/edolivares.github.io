@@ -10,32 +10,30 @@
 
 // ===== IMPORTS EN ORDEN DE PRIORIDAD =====
 
-// 1. Funciones JavaScript nativas (reemplaza jQuery)
-import('./vanilla-functions.js')
-    .then(() => {
+// Función para cargar módulos secuencialmente
+async function loadModules() {
+    try {
+        // 1. Configuración de EmailJS (DEBE cargarse primero)
+        await import('./emailjs-config.js');
+        console.log('EmailJS configuration loaded successfully');
+
+        // 2. Funciones JavaScript nativas (reemplaza jQuery)
+        await import('./vanilla-functions.js');
         console.log('Vanilla functions loaded successfully');
-    })
-    .catch(error => {
-        console.error('Error loading vanilla functions:', error);
-    });
 
-// 2. Funciones del footer (incluye actualización del año)
-import('./footer-functions.js')
-    .then(() => {
+        // 3. Funciones del footer (incluye actualización del año)
+        await import('./footer-functions.js');
         console.log('Footer functions loaded successfully');
-    })
-    .catch(error => {
-        console.error('Error loading footer functions:', error);
-    });
 
-// 3. Comportamiento del header y navegación
-import('./header-behavior.js')
-    .then(() => {
+        // 4. Comportamiento del header y navegación
+        await import('./header-behavior.js');
         console.log('Header behavior loaded successfully');
-    })
-    .catch(error => {
-        console.error('Error loading header behavior:', error);
-    });
+
+        console.log('Todos los módulos cargados correctamente');
+    } catch (error) {
+        console.error('Error loading modules:', error);
+    }
+}
 
 // Función de inicialización principal
 function initializeApp() {
@@ -47,6 +45,9 @@ function initializeApp() {
 
 // Ejecutar inicialización cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function () {
-    // Pequeño delay para asegurar que todos los imports estén cargados
-    setTimeout(initializeApp, 100);
+    // Cargar todos los módulos secuencialmente
+    loadModules().then(() => {
+        // Inicializar la aplicación después de que todos los módulos estén cargados
+        initializeApp();
+    });
 });
