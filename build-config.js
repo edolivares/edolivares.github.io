@@ -198,7 +198,7 @@ function minifyJs() {
     jsFiles.forEach(file => {
         const outputFile = file.replace('.js', '.min.js');
         const result = runCommand(
-            `npx terser ${file} -o ${outputFile} --compress drop_console=true --mangle`,
+            `npx terser ${file} -o ${outputFile} --compress drop_console=true,drop_debugger=true --mangle`,
             `Minificación de ${path.basename(file)}`
         );
         if (!result) success = false;
@@ -274,7 +274,7 @@ function bundleJs() {
 
     // Minificar bundle
     const result = runCommand(
-        `npx terser ${bundleFile} -o ${minBundleFile} --compress drop_console=true --mangle`,
+        `npx terser ${bundleFile} -o ${minBundleFile} --compress drop_console=true,drop_debugger=true --mangle`,
         'Minificación del bundle JavaScript'
     );
 
@@ -299,7 +299,7 @@ function minifyMainFiles() {
     // Minificar main.js
     if (fs.existsSync('assets/js/main.js')) {
         const result = runCommand(
-            'npx terser assets/js/main.js -o assets/js/main.min.js --compress drop_console=true',
+            'npx terser assets/js/main.js -o assets/js/main.min.js --compress drop_console=true,drop_debugger=true',
             'Minificación de main.js'
         );
         if (!result) success = false;

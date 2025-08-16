@@ -475,7 +475,7 @@ function clearSuccessMessage() {
     }
 }
 
-// Enviar formulario con EmailJS
+// Enviar formulario con EmailJS y reCAPTCHA v3
 function submitForm() {
     const formData = new FormData(document.getElementById('contactForm'));
     const successDiv = document.getElementById('success');
@@ -484,58 +484,58 @@ function submitForm() {
     const phone = document.getElementById('phone').value;
     const message = document.getElementById('message').value;
 
-    // Verificar reCAPTCHA
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-        successDiv.innerHTML = '<div class="alert alert-warning">Por favor, completa el reCAPTCHA antes de enviar el mensaje.</div>';
-        return;
-    }
-
     // Mostrar mensaje de carga
-    successDiv.innerHTML = '<div class="alert alert-info">Enviando mensaje...</div>';
+    successDiv.innerHTML = '<div class="alert alert-info">Verificando seguridad...</div>';
 
-    // Obtener configuración de EmailJS
-    const config = getEmailJSConfig();
+    // Ejecutar reCAPTCHA v3
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LflkqcrAAAAAILdQ3yufCxa0xGaT9sA2LsyVEqP', {
+                action: 'contact_form_submit'  // Acción más específica
+            })
+            .then(function (token) {
+                // Mostrar mensaje de envío
+                successDiv.innerHTML = '<div class="alert alert-info">Enviando mensaje...</div>';
 
-    // Verificar que EmailJS esté disponible
-    if (typeof emailjs === 'undefined') {
-        showErrorMessage();
-        return;
-    }
+                // Obtener configuración de EmailJS
+                const config = getEmailJSConfig();
 
-    // Parámetros del template
-    const templateParams = {
-        from_name: name,
-        from_email: email,
-        from_phone: phone,
-        message: message,
-        to_name: "Eduardo Olivares",
-        'g-recaptcha-response': recaptchaResponse
-    };
+                // Verificar que EmailJS esté disponible
+                if (typeof emailjs === 'undefined') {
+                    showErrorMessage();
+                    return;
+                }
 
-    // Enviar email usando EmailJS
-    emailjs.send(
-            config.SERVICE_ID,
-            config.TEMPLATE_ID,
-            templateParams
-        )
-        .then(function (response) {
-            console.log('SUCCESS!', response.status, response.text);
-            showSuccessMessage();
-            document.getElementById('contactForm').reset();
-            // Resetear reCAPTCHA
-            if (typeof grecaptcha !== 'undefined') {
-                grecaptcha.reset();
-            }
-        }, function (error) {
-            console.log('FAILED...', error);
-            showErrorMessage();
-            document.getElementById('contactForm').reset();
-            // Resetear reCAPTCHA
-            if (typeof grecaptcha !== 'undefined') {
-                grecaptcha.reset();
-            }
-        });
+                // Parámetros del template
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    from_phone: phone,
+                    message: message,
+                    to_name: "Eduardo Olivares",
+                    'g-recaptcha-response': token
+                };
+
+                // Enviar email usando EmailJS
+                emailjs.send(
+                        config.SERVICE_ID,
+                        config.TEMPLATE_ID,
+                        templateParams
+                    )
+                    .then(function (response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        showSuccessMessage();
+                        document.getElementById('contactForm').reset();
+                    }, function (error) {
+                        console.log('FAILED...', error);
+                        showErrorMessage();
+                        document.getElementById('contactForm').reset();
+                    });
+            })
+            .catch(function (error) {
+                console.error('reCAPTCHA error:', error);
+                successDiv.innerHTML = '<div class="alert alert-danger">Error en la verificación de seguridad. Por favor, intenta nuevamente.</div>';
+            });
+    });
 }
 
 // Mostrar mensaje de éxito
