@@ -1342,3 +1342,225 @@ footer .quicklinks ul.quicklinks li a:hover {
 }
 
 
+/* === jobs.css === */
+/* ===== ESTILOS PARA LA SECCIÓN DE EXPERIENCIA LABORAL ===== */
+
+/* Estilos para la sección completa */
+#experience {
+  background-color: #f8f9fa;
+}
+
+/* Estilos para las cards de experiencia */
+#experience .experience-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 8px 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+}
+
+#experience .experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para el contenido de la card */
+#experience .company-name {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#experience .job-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+#experience .job-period {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+#experience .experience-content {
+  padding: 25px;
+}
+
+#experience .row.align-items-center {
+  min-height: 120px;
+}
+
+/* Tech Stack Preview en las cards */
+#experience .tech-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#experience .tech-mini-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  background: white;
+  color: #6c757d;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+#experience .tech-mini-badge img {
+  width: 12px;
+  height: 12px;
+}
+
+#experience .tech-mini-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: #007bff;
+}
+
+/* Estilos para el botón "Ver más" */
+#experience .btn-primary {
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+/* Tech Stack completo en el modal */
+#experience .tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#experience .tech-badge,
+.experience-details .tech-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background: white;
+  color: #374151;
+  gap: 6px;
+  transition: all 0.2s ease;
+  margin-bottom: 5px;
+}
+
+#experience .tech-badge img {
+  width: 16px;
+  height: 16px;
+}
+
+#experience .tech-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #007bff;
+}
+
+/* Estilos para el modal de experiencia */
+#experience .experience-details h4 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+#experience .experience-details ul {
+  color: #555;
+  line-height: 1.8;
+}
+
+#experience .experience-details li {
+  margin-bottom: 8px;
+}
+
+/* Estilos específicos del modal */
+.experience-modal .experience-header h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.experience-modal .experience-header h3 {
+  color: #007bff;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.experience-modal .experience-header p {
+  color: #6c757d;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.experience-modal .experience-details h4 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.experience-modal .experience-details ul {
+  color: #555;
+  line-height: 1.8;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* Espaciado adicional para el contenido de la modal */
+.experience-modal .experience-details .row {
+  margin-bottom: 25px;
+}
+
+.experience-modal .experience-details .col-12 {
+  padding: 0 30px;
+}
+
+/* Padding adicional para el header de la modal */
+.experience-modal .experience-header {
+  padding: 0 30px;
+}
+
+/* Padding para el body completo de la modal */
+.experience-modal .modal-body {
+  padding: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #experience .experience-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  #experience .job-title {
+    font-size: 18px;
+  }
+
+  #experience .job-company {
+    font-size: 16px;
+  }
+
+  #experience .tech-preview {
+    gap: 4px;
+  }
+
+  #experience .tech-mini-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+}
+
+

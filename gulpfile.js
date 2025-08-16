@@ -125,7 +125,8 @@ function bundleCss() {
             'assets/css/contact-form.css',
             'assets/css/footer.css',
             'assets/css/portfolio.css',
-            'assets/css/about.css'
+            'assets/css/about.css',
+            'assets/css/jobs.css'
         ], {
             base: 'assets/css'
         })

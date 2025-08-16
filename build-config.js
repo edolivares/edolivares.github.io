@@ -47,9 +47,11 @@ const config = {
             'assets/css/contact-form.css',
             'assets/css/footer.css',
             'assets/css/portfolio.css',
-            'assets/css/about.css'
+            'assets/css/about.css',
+            'assets/css/jobs.css'
         ],
         js: [
+            'assets/js/emailjs-config.js',
             'assets/js/vanilla-functions.js',
             'assets/js/header-behavior.js',
             'assets/js/footer-functions.js',
