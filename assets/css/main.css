@@ -10,6 +10,7 @@
  * 5. footer.css - Footer
  * 6. portfolio.css - Estilos específicos del portafolio
  * 7. about.css - Estilos para la sección About
+ * 8. jobs.css - Estilos para la sección de experiencia laboral
  */
 
 /* ===== IMPORTS EN ORDEN DE PRIORIDAD ===== */
@@ -34,3 +35,6 @@
 
 /* 7. About - Estilos para la sección About */
 @import url("about.css");
+
+/* 8. Jobs - Estilos para la sección de experiencia laboral */
+@import url("jobs.css");

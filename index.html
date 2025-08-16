@@ -47,8 +47,8 @@
     />
 
     <!-- Main CSS - Archivo principal que importa todos los estilos -->
-    <!--<link href="assets/css/main.css" rel="stylesheet" type="text/css" /> -->
-    <link href="assets/css/bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <!--<link href="assets/css/bundle.css" rel="stylesheet" type="text/css" /> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -127,6 +127,12 @@
             </li>
             <li role="none">
               <a class="page-scroll" href="#about" role="menuitem">About</a>
+            </li>
+
+            <li role="none">
+              <a class="page-scroll" href="#experience" role="menuitem"
+                >Experiencia</a
+              >
             </li>
 
             <li role="none">
@@ -455,6 +461,95 @@
                   </div>
                 </li>
               </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience" aria-labelledby="experience-heading">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <h2 id="experience-heading" class="section-heading">
+                Experiencia Profesional
+              </h2>
+              <h3 class="section-subheading text-muted">
+                Mi trayectoria laboral en desarrollo de software.
+              </h3>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- Experience Card -->
+              <div class="experience-card">
+                <div class="row align-items-center">
+                  <!-- Content Column -->
+                  <div class="col-lg-10">
+                    <div class="experience-content">
+                      <div class="company-name">OrionSystems LTDA</div>
+                      <div class="job-title">FULL STACK DEVELOPER</div>
+                      <div class="job-period">Mayo 2018 - Actualidad</div>
+
+                      <!-- Tech Stack Preview -->
+                      <div class="tech-preview">
+                        <span class="tech-mini-badge">
+                          <img
+                            height="12"
+                            width="12"
+                            alt="PHP"
+                            src="https://cdn.simpleicons.org/php"
+                          />
+                          <span>PHP</span>
+                        </span>
+                        <span class="tech-mini-badge">
+                          <img
+                            height="12"
+                            width="12"
+                            alt="Laravel"
+                            src="https://cdn.simpleicons.org/laravel"
+                          />
+                          <span>Laravel</span>
+                        </span>
+                        <span class="tech-mini-badge">
+                          <img
+                            height="12"
+                            width="12"
+                            alt="Vue.js"
+                            src="https://cdn.simpleicons.org/vuedotjs"
+                          />
+                          <span>Vue.js</span>
+                        </span>
+                        <span class="tech-mini-badge">
+                          <img
+                            height="16"
+                            width="16"
+                            alt="AWS"
+                            src="assets/images/icons/aws.png"
+                          />
+                          <span>AWS</span>
+                        </span>
+                        <span class="tech-mini-badge">
+                          <span>+5 más</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Button Column -->
+                  <div class="col-lg-2 text-center">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#experienceModal1"
+                    >
+                      Ver más
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1030,6 +1125,265 @@
               data-bs-dismiss="modal"
             >
               <i class="fas fa-times" aria-hidden="true"></i> Cerrar proyecto
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Modal 1 -->
+    <div
+      class="modal fade"
+      id="experienceModal1"
+      tabindex="-1"
+      aria-labelledby="experienceModal1Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="experience-header text-center mb-4">
+              <h2 id="experienceModal1Label">OrionSystems LTDA</h2>
+              <h3>FULL STACK DEVELOPER</h3>
+              <p>
+                <i class="fas fa-calendar-alt me-2"></i>
+                Mayo 2018 - Actualidad
+              </p>
+            </div>
+
+            <div class="experience-details">
+              <!-- Responsabilidades Principales -->
+              <div class="row mb-5">
+                <div class="col-12">
+                  <h4>
+                    <i class="fas fa-tasks me-2"></i>Responsabilidades
+                    Principales
+                  </h4>
+                  <ul class="mb-0">
+                    <li>
+                      Desarrollo full-stack de aplicaciones web empresariales
+                    </li>
+                    <li>Diseño y arquitectura de bases de datos</li>
+                    <li>Implementación de APIs RESTful</li>
+                    <li>Optimización de rendimiento y escalabilidad</li>
+                    <li>Mentoría a desarrolladores junior</li>
+                    <li>
+                      Desarrollo de juegos interactivos utilizando Unity como
+                      motor gráfico
+                    </li>
+                    <li>
+                      Monitorización y supervisión del estado operativo de las
+                      aplicaciones en producción
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Tecnologías Utilizadas -->
+              <div class="row mb-5">
+                <div class="col-12">
+                  <h4>
+                    <i class="fas fa-code me-2"></i>Tecnologías Utilizadas
+                  </h4>
+                  <div class="tech-stack">
+                    <!-- Frontend -->
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="HTML5"
+                        src="https://cdn.simpleicons.org/html5"
+                      />
+                      <span>HTML5</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="CSS"
+                        src="https://cdn.simpleicons.org/css"
+                      />
+                      <span>CSS</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="JavaScript"
+                        src="https://cdn.simpleicons.org/javascript"
+                      />
+                      <span>JavaScript</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="Vue.js"
+                        src="https://cdn.simpleicons.org/vuedotjs"
+                      />
+                      <span>Vue.js</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="React"
+                        src="https://cdn.simpleicons.org/react"
+                      />
+                      <span>React</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="Unity"
+                        src="https://cdn.simpleicons.org/unity/black"
+                      />
+                      <span>Unity</span>
+                    </span>
+
+                    <!-- Backend -->
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="PHP"
+                        src="https://cdn.simpleicons.org/php"
+                      />
+                      <span>PHP</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="Laravel"
+                        src="https://cdn.simpleicons.org/laravel"
+                      />
+                      <span>Laravel</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt=".NET"
+                        src="https://cdn.simpleicons.org/dotnet"
+                      />
+                      <span>.NET</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="Node.js"
+                        src="https://cdn.simpleicons.org/nodedotjs"
+                      />
+                      <span>Node.js</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="MySQL"
+                        src="https://cdn.simpleicons.org/mysql"
+                      />
+                      <span>MySQL</span>
+                    </span>
+
+                    <!-- Cloud & DevOps -->
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="AWS"
+                        src="assets/images/icons/aws.png"
+                      />
+                      <span>AWS</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="Cloudflare"
+                        src="https://cdn.simpleicons.org/cloudflare"
+                      />
+                      <span>Cloudflare</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="Docker"
+                        src="https://cdn.simpleicons.org/docker"
+                      />
+                      <span>Docker</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="Git"
+                        src="https://cdn.simpleicons.org/git"
+                      />
+                      <span>Git</span>
+                    </span>
+                    <span class="tech-badge">
+                      <img
+                        height="16"
+                        width="16"
+                        alt="GitHub"
+                        src="https://cdn.simpleicons.org/github"
+                      />
+                      <span>GitHub</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <h4><i class="fas fa-star me-2"></i>Logros Destacados</h4>
+                  <ul class="mb-0">
+                    <li>
+                      Reducción del tiempo de deploy en un 60% mediante
+                      implementación de CI/CD.
+                    </li>
+                    <li>
+                      Mejora del rendimiento de aplicaciones web en un 40%
+                      mediante optimización de consultas y caché.
+                    </li>
+                    <li>
+                      Optimización de flujos críticos de aplicaciones utilizando
+                      modelos de machine learning.
+                    </li>
+                    <li>
+                      Implementación de pruebas de integración y unitarias en
+                      API principal.
+                    </li>
+                    <li>
+                      Implementación de sistema de licenciamiento para juegos
+                      Unity basado en web tokens.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer border-0">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              <i class="fas fa-times me-2"></i>Cerrar
             </button>
           </div>
         </div>
