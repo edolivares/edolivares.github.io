@@ -266,11 +266,24 @@ function initFormValidation() {
         // Agregar contador de caracteres para el campo de mensaje
         const messageField = document.getElementById('message');
         if (messageField) {
-            // Crear contador de caracteres
-            const charCounter = document.createElement('div');
-            charCounter.className = 'char-counter text-muted small mt-1';
-            charCounter.style.fontSize = '12px';
-            messageField.parentNode.appendChild(charCounter);
+            // Limpiar contadores duplicados existentes
+            const existingCounters = messageField.parentNode.querySelectorAll('.char-counter');
+            if (existingCounters.length > 1) {
+                existingCounters.forEach((counter, index) => {
+                    if (index > 0) counter.remove(); // Mantener solo el primero
+                });
+            }
+
+            // Verificar si ya existe un contador para evitar duplicados
+            let charCounter = messageField.parentNode.querySelector('.char-counter');
+            if (!charCounter) {
+                // Crear contador de caracteres solo si no existe
+                charCounter = document.createElement('div');
+                charCounter.className = 'char-counter small mt-1';
+                charCounter.style.fontSize = '12px';
+                charCounter.style.color = '#6c757d'; // Color gris visible
+                messageField.parentNode.appendChild(charCounter);
+            }
 
             // Actualizar contador en tiempo real
             messageField.addEventListener('input', function () {
@@ -280,13 +293,16 @@ function initFormValidation() {
 
                 if (remaining < 0) {
                     charCounter.textContent = `Excediste el límite por ${Math.abs(remaining)} caracteres`;
-                    charCounter.className = 'char-counter text-danger small mt-1';
+                    charCounter.className = 'char-counter small mt-1';
+                    charCounter.style.color = '#dc3545'; // Rojo para error
                 } else if (remaining <= 100) {
                     charCounter.textContent = `${currentLength}/${maxLength} caracteres (${remaining} restantes)`;
-                    charCounter.className = 'char-counter text-warning small mt-1';
+                    charCounter.className = 'char-counter small mt-1';
+                    charCounter.style.color = '#ffc107'; // Amarillo para advertencia
                 } else {
                     charCounter.textContent = `${currentLength}/${maxLength} caracteres`;
-                    charCounter.className = 'char-counter text-muted small mt-1';
+                    charCounter.className = 'char-counter small mt-1';
+                    charCounter.style.color = '#d9d9d9'; // Gris para normal
                 }
             });
 
@@ -440,67 +456,137 @@ function clearSuccessMessage() {
     }
 }
 
-// Enviar formulario con EmailJS y reCAPTCHA v3
+// Enviar formulario con EmailJS y reCAPTCHA v2
 function submitForm() {
-    const formData = new FormData(document.getElementById('contactForm'));
+    // Prevenir envíos múltiples
+    if (window.formSubmitting) {
+        return;
+    }
+    window.formSubmitting = true;
+
+    // Verificar que todos los elementos existan
+    const contactForm = document.getElementById('contactForm');
     const successDiv = document.getElementById('success');
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const message = document.getElementById('message').value;
+    const nameField = document.getElementById('name');
+    const emailField = document.getElementById('email');
+    const phoneField = document.getElementById('phone');
+    const messageField = document.getElementById('message');
+    const submitButton = document.getElementById('sendMessageButton');
+
+    // Validar que todos los elementos estén presentes
+    if (!contactForm || !successDiv || !nameField || !emailField || !phoneField || !messageField || !submitButton) {
+        console.error('Error: Elementos del formulario no encontrados');
+        console.log('contactForm:', contactForm);
+        console.log('successDiv:', successDiv);
+        console.log('nameField:', nameField);
+        console.log('emailField:', emailField);
+        console.log('phoneField:', phoneField);
+        console.log('messageField:', messageField);
+        console.log('submitButton:', submitButton);
+        window.formSubmitting = false;
+        return;
+    }
+
+    const formData = new FormData(contactForm);
+    const name = nameField.value;
+    const email = emailField.value;
+    const phone = phoneField.value;
+    const message = messageField.value;
 
     // Mostrar mensaje de carga
-    successDiv.innerHTML = '<div class="alert alert-info">Verificando seguridad...</div>';
+    if (successDiv) {
+        successDiv.innerHTML = '<div class="alert alert-info">Verificando seguridad...</div>';
+    }
 
-    // Ejecutar reCAPTCHA v3
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6LflkqcrAAAAAILdQ3yufCxa0xGaT9sA2LsyVEqP', {
-                action: 'contact_form_submit' // Acción más específica
-            })
-            .then(function (token) {
-                // Mostrar mensaje de envío
-                successDiv.innerHTML = '<div class="alert alert-info">Enviando mensaje...</div>';
+    // Verificar que reCAPTCHA esté disponible
+    if (typeof grecaptcha === 'undefined') {
+        successDiv.innerHTML = '<div class="alert alert-danger">Error: reCAPTCHA no está disponible. Por favor, recarga la página.</div>';
+        return;
+    }
 
-                // Obtener configuración de EmailJS
-                const config = getEmailJSConfig();
+    // Verificar que reCAPTCHA v2 esté completado
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+        if (successDiv) {
+            successDiv.innerHTML = '<div class="alert alert-danger">Por favor, completa la verificación reCAPTCHA antes de enviar el mensaje.</div>';
+        }
+        window.formSubmitting = false;
+        return;
+    }
 
-                // Verificar que EmailJS esté disponible
-                if (typeof emailjs === 'undefined') {
-                    showErrorMessage();
-                    return;
-                }
+    // Mostrar mensaje de envío
+    if (successDiv) {
+        successDiv.innerHTML = '<div class="alert alert-info">Enviando mensaje...</div>';
+    }
 
-                // Parámetros del template
-                const templateParams = {
-                    from_name: name,
-                    from_email: email,
-                    from_phone: phone,
-                    message: message,
-                    to_name: "Eduardo Olivares",
-                    'g-recaptcha-response': token
-                };
+    // Bloquear el botón de envío
+    const originalText = submitButton.innerHTML;
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
-                // Enviar email usando EmailJS
-                emailjs.send(
-                        config.SERVICE_ID,
-                        config.TEMPLATE_ID,
-                        templateParams
-                    )
-                    .then(function (response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        showSuccessMessage();
-                        document.getElementById('contactForm').reset();
-                    }, function (error) {
-                        console.log('FAILED...', error);
-                        showErrorMessage();
-                        document.getElementById('contactForm').reset();
-                    });
-            })
-            .catch(function (error) {
-                console.error('reCAPTCHA error:', error);
-                successDiv.innerHTML = '<div class="alert alert-danger">Error en la verificación de seguridad. Por favor, intenta nuevamente.</div>';
-            });
+    // Obtener configuración de EmailJS
+    const config = getEmailJSConfig();
+
+    // Verificar que EmailJS esté disponible
+    if (typeof emailjs === 'undefined') {
+        showErrorMessage();
+        return;
+    }
+
+    // Obtener fecha y hora actual
+    const now = new Date();
+    const date = now.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
     });
+    const time = now.toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    // Parámetros del template
+    const templateParams = {
+        from_name: name,
+        from_email: email,
+        from_phone: phone,
+        message: message,
+        to_name: "Eduardo Olivares",
+        date: date,
+        time: time,
+        'g-recaptcha-response': recaptchaResponse
+    };
+
+    // Enviar email usando EmailJS
+    emailjs.send(
+            config.SERVICE_ID,
+            config.TEMPLATE_ID,
+            templateParams
+        )
+        .then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+            showSuccessMessage();
+            document.getElementById('contactForm').reset();
+            // Resetear reCAPTCHA después del envío exitoso
+            grecaptcha.reset();
+            // Restaurar el botón
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+            // Resetear bandera de envío
+            window.formSubmitting = false;
+        }, function (error) {
+            console.log('FAILED...', error);
+            showErrorMessage();
+            document.getElementById('contactForm').reset();
+            // Resetear reCAPTCHA después del error
+            grecaptcha.reset();
+            // Restaurar el botón
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+            // Resetear bandera de envío
+            window.formSubmitting = false;
+        });
 }
 
 // Mostrar mensaje de éxito

@@ -126,3 +126,22 @@
     margin-top: 10px;
   }
 }
+
+/* ===== ESTILOS PARA RECAPTCHA V2 ===== */
+.g-recaptcha {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.g-recaptcha > div {
+  transform: scale(1);
+  transform-origin: center;
+}
+
+/* Responsive para reCAPTCHA en móviles */
+@media (max-width: 768px) {
+  .g-recaptcha > div {
+    transform: scale(0.9);
+  }
+}

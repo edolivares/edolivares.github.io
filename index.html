@@ -330,7 +330,7 @@
             <div class="col-sm-12">
               <article class="team-member">
                 <img
-                  src="assets/images/team/1.jpg"
+                  src="assets/images/team/eo_thumb.webp"
                   class="img-fluid rounded-circle"
                   alt="Foto de Eduardo Olivares"
                 />
@@ -338,7 +338,7 @@
                 <p class="text-muted" style="margin: 5px">
                   Ingeniero en Informática
                 </p>
-                <p class="text-muted">Web Developer</p>
+                <p class="text-muted">Full Stack Developer</p>
                 <nav
                   class="social-links mb-4"
                   aria-label="Enlaces a redes sociales"
@@ -744,9 +744,19 @@
                     </div>
                   </div>
                   <div class="clearfix"></div>
+                  <div class="col-lg-12 d-flex justify-content-start">
+                    <div
+                      class="g-recaptcha mb-3"
+                      data-sitekey="6Lc6WakrAAAAAHyFZBbedJyh6StL1X9CfX6ekYyz"
+                    ></div>
+                  </div>
                   <div class="col-lg-12 text-center">
                     <div id="success" role="alert" aria-live="polite"></div>
-                    <button type="submit" class="btn btn-xl">
+                    <button
+                      type="submit"
+                      class="btn btn-xl"
+                      id="sendMessageButton"
+                    >
                       Enviar mensaje
                     </button>
                   </div>
@@ -1715,8 +1725,8 @@
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
 
-    <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LflkqcrAAAAAILdQ3yufCxa0xGaT9sA2LsyVEqP"></script>
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- Main JavaScript - Archivo principal que importa todos los scripts -->
     <!--<script type="module" src="assets/js/main.js"></script>-->
