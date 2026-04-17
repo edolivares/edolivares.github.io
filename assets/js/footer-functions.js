@@ -13,10 +13,12 @@ function updateCopyrightYear() {
     }
 }
 
-// Ejecutar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function () {
+// Ejecutar basándose en el estado del DOM
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateCopyrightYear);
+} else {
     updateCopyrightYear();
-});
+}
 
 // Exportar la función para uso en otros módulos (si es necesario)
 if (typeof module !== 'undefined' && module.exports) {

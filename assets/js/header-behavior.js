@@ -3,7 +3,7 @@
  * Maneja el comportamiento del navbar y la funcionalidad page-scroll
  */
 
-document.addEventListener('DOMContentLoaded', function () {
+function initHeaderBehavior() {
     const navbar = document.getElementById('mainNav');
     const navbarBrand = document.querySelector('.navbar-brand');
     const navbarCollapse = document.querySelector('.navbar-collapse');
@@ -63,21 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ===== NAVEGACIÓN ACTIVA POR SCROLL =====
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('section[id], header[id]');
     const navItems = document.querySelectorAll('.navbar-nav a');
 
     function updateActiveNavItem() {
-        const scrollPosition = window.scrollY + navbar.offsetHeight + 100;
-
-        // Remover clase active de todos los enlaces primero
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            // También remover la clase active del li padre
-            const parentLi = item.closest('li');
-            if (parentLi) {
-                parentLi.classList.remove('active');
-            }
-        });
+        // Reducimos el offset para que el cambio sea más preciso
+        const scrollPosition = window.scrollY + navbar.offsetHeight + 50;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -85,11 +76,19 @@ document.addEventListener('DOMContentLoaded', function () {
             const sectionId = section.getAttribute('id');
 
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remover clase active de todos primero (solo cuando detectamos la sección actual)
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    const parentLi = item.closest('li');
+                    if (parentLi) {
+                        parentLi.classList.remove('active');
+                    }
+                });
+
                 // Agregar clase active al enlace correspondiente
                 const correspondingNavItem = document.querySelector(`.navbar-nav a[href="#${sectionId}"]`);
                 if (correspondingNavItem) {
                     correspondingNavItem.classList.add('active');
-                    // También agregar la clase active al li padre
                     const parentLi = correspondingNavItem.closest('li');
                     if (parentLi) {
                         parentLi.classList.add('active');
@@ -104,4 +103,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ejecutar una vez al cargar para establecer el estado inicial
     updateActiveNavItem();
-});
+}
+
+// Inicializar basándose en el estado del DOM
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderBehavior);
+} else {
+    initHeaderBehavior();
+}
