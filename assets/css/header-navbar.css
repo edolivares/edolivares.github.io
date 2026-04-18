@@ -230,18 +230,13 @@ header.hero .intro-heading {
 @media (min-width: 768px) {
   .navbar-custom {
     padding: 25px 0;
-    background-color: transparent;
-    -webkit-transition: padding 0.3s;
-    -moz-transition: padding 0.3s;
-    transition: padding 0.3s;
+    transition: padding 0.3s ease-in-out, background-color 0.3s ease-in-out;
     border: none;
   }
 
   .navbar-custom .navbar-brand {
     font-size: 2em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
+    transition: all 0.3s ease-in-out;
   }
 
   .navbar-custom .navbar-nav > .active > a {
@@ -282,6 +277,7 @@ header.hero .intro-heading {
 @media (min-width: 768px) {
   .navbar-custom.affix {
     background-color: var(--bg-dark);
+    background-image: none !important;
     padding: 10px 0;
   }
 
