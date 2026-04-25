@@ -114,23 +114,25 @@ Current sections found:
   - [ ] `Textarea.astro`
 - [ ] Molecules:
   - [x] `NavLink.astro`
-  - [ ] `FormField.astro`
-  - [ ] `TimelineItem.astro`
+  - [x] `FormField.astro`
+  - [x] `TimelineItem.astro`
   - [x] `PortfolioCard.astro`
   - [ ] `ModalHeader.astro`
   - [ ] `SkillIcon.astro`
   - [x] `SocialLinks.astro`
+  - [x] `ExperienceCard.astro`
+  - [x] `TechBadge.astro`
 - [ ] Organisms:
   - [x] `Navbar.astro`
   - [x] `Hero.astro`
   - [x] `PortfolioSection.astro`
   - [x] `WhoAmISection.astro`
-  - [ ] `AboutTimeline.astro`
-  - [ ] `ExperienceSection.astro`
-  - [ ] `ContactForm.astro`
-  - [ ] `Footer.astro`
+  - [x] `AboutTimeline.astro`
+  - [x] `ExperienceSection.astro`
+  - [x] `ContactForm.astro`
+  - [x] `Footer.astro`
   - [x] `PortfolioModal.astro`
-  - [ ] `ExperienceModal.astro`
+  - [x] `ExperienceModal.astro`
 - [ ] Templates:
   - [x] `PortfolioPageTemplate.astro`
 
@@ -139,9 +141,9 @@ Current sections found:
 - [x] Migrate navbar affix/scroll behavior from `header-behavior.js`.
 - [ ] Migrate smooth scroll/page-scroll behavior.
 - [x] Migrate responsive menu behavior.
-- [ ] Migrate footer year behavior.
-- [ ] Migrate EmailJS contact flow.
-- [ ] Preserve reCAPTCHA loading and behavior.
+- [x] Migrate footer year behavior.
+- [x] Migrate EmailJS contact flow.
+- [x] Preserve reCAPTCHA loading and behavior.
 - [ ] Remove dead/minified legacy bundles once their behavior is represented in Astro.
 
 ## Phase 7: Scoped CSS Cleanup
@@ -171,8 +173,8 @@ Current sections found:
 - [x] Check navbar scroll/affix behavior.
 - [x] Check responsive menu.
 - [x] Check portfolio modals.
-- [ ] Check experience modals.
-- [ ] Check contact form UI and validation.
+- [x] Check experience modals.
+- [x] Check contact form UI and validation.
 - [ ] Check all external links.
 - [ ] Confirm GitHub Pages deployment succeeds.
 

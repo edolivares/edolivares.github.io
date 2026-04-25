@@ -25,6 +25,16 @@ import { portfolioProjects } from '../../data/portfolio';
   const modals = document.querySelectorAll('[data-portfolio-modal]');
   let activeModal: HTMLElement | null = null;
 
+  const getPortfolioModal = (modalId: string) => {
+    const modal = document.getElementById(modalId);
+
+    if (!(modal instanceof HTMLElement) || !modal.hasAttribute('data-portfolio-modal')) {
+      return null;
+    }
+
+    return modal;
+  };
+
   const closeModal = () => {
     if (!activeModal) return;
 
@@ -40,7 +50,7 @@ import { portfolioProjects } from '../../data/portfolio';
   };
 
   const openModal = (modalId: string) => {
-    const modal = document.getElementById(modalId);
+    const modal = getPortfolioModal(modalId);
     if (!modal) return;
 
     closeModal();
@@ -85,11 +95,18 @@ import { portfolioProjects } from '../../data/portfolio';
       closeModal();
       return;
     }
+
+    if (!getPortfolioModal(modalId)) {
+      closeModal();
+      return;
+    }
+
     openModal(modalId);
   });
 
-  if (window.location.hash) {
-    openModal(window.location.hash.slice(1));
+  const initialModalId = window.location.hash.slice(1);
+  if (initialModalId && getPortfolioModal(initialModalId)) {
+    openModal(initialModalId);
   }
 </script>
 

@@ -1,0 +1,95 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  placeholder: string;
+  type?: string;
+  required?: boolean;
+  textarea?: boolean;
+  rows?: number;
+}
+
+const { id, name, placeholder, type = 'text', required = false, textarea = false, rows = 6 } = Astro.props;
+---
+
+<div class="form-group">
+  {
+    textarea ? (
+      <textarea
+        class="form-control"
+        placeholder={placeholder}
+        id={id}
+        name={name}
+        required={required}
+        aria-required={required ? 'true' : undefined}
+        rows={rows}
+      />
+    ) : (
+      <input
+        type={type}
+        class="form-control"
+        placeholder={placeholder}
+        id={id}
+        name={name}
+        required={required}
+        aria-required={required ? 'true' : undefined}
+      />
+    )
+  }
+  <p class="help-block" data-error-for={id}></p>
+</div>
+
+<style>
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  .form-control {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    color: var(--color-ink);
+    font: inherit;
+  }
+
+  textarea.form-control {
+    min-height: 236px;
+    resize: vertical;
+  }
+
+  .form-control:focus {
+    border-color: var(--color-brand);
+    box-shadow: none;
+    outline: 0;
+  }
+
+  .form-control.is-invalid {
+    border-color: #e74c3c;
+  }
+
+  .form-control::placeholder {
+    color: var(--color-muted);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    opacity: 1;
+    text-transform: uppercase;
+  }
+
+  .help-block {
+    min-height: 1.25rem;
+    margin: 5px 0 0;
+    color: #737373;
+    font-size: 0.875rem;
+  }
+
+  .help-block.text-danger {
+    color: #e74c3c;
+  }
+
+  @media (max-width: 767px) {
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+</style>

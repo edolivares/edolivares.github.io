@@ -1,0 +1,328 @@
+---
+import FormField from '../molecules/FormField.astro';
+
+const emailJsPublicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY ?? '';
+const emailJsServiceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID ?? '';
+const emailJsTemplateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID ?? '';
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY ?? '';
+---
+
+<section id="contact" class="contact-section" aria-labelledby="contact-heading">
+  <div class="container">
+    <header class="section-header">
+      <h2 id="contact-heading">Contáctame!</h2>
+      <p>Siempre abierto a propuestas, trabajos e ideas locas.</p>
+    </header>
+
+    <form
+      name="sentMessage"
+      id="contactForm"
+      novalidate
+      role="form"
+      aria-labelledby="contact-heading"
+      data-emailjs-public-key={emailJsPublicKey}
+      data-emailjs-service-id={emailJsServiceId}
+      data-emailjs-template-id={emailJsTemplateId}
+    >
+      <div class="form-grid">
+        <div>
+          <FormField id="name" name="name" placeholder="Tu nombre *" required />
+          <FormField id="email" name="email" type="email" placeholder="Tu email *" required />
+          <FormField id="phone" name="phone" type="tel" placeholder="Tu teléfono" />
+        </div>
+
+        <FormField id="message" name="message" placeholder="Tu mensaje *" textarea required />
+      </div>
+
+      <div class="recaptcha-wrap">
+        {recaptchaSiteKey && <div class="g-recaptcha" data-sitekey={recaptchaSiteKey}></div>}
+      </div>
+
+      <div class="submit-wrap">
+        <div id="success" role="alert" aria-live="polite"></div>
+        <button type="submit" class="submit-button" id="sendMessageButton">Enviar mensaje</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+  const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+  const successDiv = document.getElementById('success');
+  const submitButton = document.getElementById('sendMessageButton') as HTMLButtonElement | null;
+  let formSubmitting = false;
+
+  const showStatus = (type: 'info' | 'success' | 'danger', message: string) => {
+    if (!successDiv) return;
+    successDiv.innerHTML = `<div class="alert alert-${type}"><strong>${message}</strong></div>`;
+  };
+
+  const clearStatus = () => {
+    if (successDiv) successDiv.innerHTML = '';
+  };
+
+  const getField = (name: string) => contactForm?.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | null;
+
+  const clearFieldError = (field: HTMLInputElement | HTMLTextAreaElement) => {
+    const error = document.querySelector(`[data-error-for="${field.id}"]`);
+    if (error) {
+      error.textContent = '';
+      error.classList.remove('text-danger');
+    }
+    field.classList.remove('is-invalid');
+  };
+
+  const showFieldError = (field: HTMLInputElement | HTMLTextAreaElement, message: string) => {
+    const error = document.querySelector(`[data-error-for="${field.id}"]`);
+    if (error) {
+      error.textContent = message;
+      error.classList.add('text-danger');
+    }
+    field.classList.add('is-invalid');
+  };
+
+  const validateField = (field: HTMLInputElement | HTMLTextAreaElement) => {
+    const value = field.value.trim();
+    let errorMessage = '';
+
+    if (field.required && value === '') {
+      errorMessage = 'Este campo es requerido.';
+    } else if (field.name === 'name') {
+      const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]{2,50}$/;
+      if (value.length < 2) errorMessage = 'El nombre debe tener al menos 2 caracteres.';
+      else if (value.length > 50) errorMessage = 'El nombre no puede exceder 50 caracteres.';
+      else if (!nameRegex.test(value)) errorMessage = 'El nombre solo puede contener letras, espacios y guiones.';
+    } else if (field.name === 'email') {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(value)) errorMessage = 'Por favor ingrese un email válido (ejemplo: usuario@dominio.com).';
+      else if (value.length > 100) errorMessage = 'El email no puede exceder 100 caracteres.';
+    } else if (field.name === 'phone' && value !== '') {
+      const phoneRegex = /^[+]?[0-9\s\-()]{7,20}$/;
+      if (!phoneRegex.test(value)) errorMessage = 'El teléfono debe contener solo números, espacios, guiones y paréntesis.';
+      else if (value.length < 7) errorMessage = 'El teléfono debe tener al menos 7 dígitos.';
+      else if (value.length > 20) errorMessage = 'El teléfono no puede exceder 20 caracteres.';
+    } else if (field.name === 'message') {
+      if (value.length < 10) errorMessage = 'El mensaje debe tener al menos 10 caracteres.';
+      else if (value.length > 1000) errorMessage = 'El mensaje no puede exceder 1000 caracteres.';
+      else if (value.split(/\s+/).length < 3) errorMessage = 'El mensaje debe contener al menos 3 palabras.';
+    }
+
+    if (errorMessage) {
+      showFieldError(field, errorMessage);
+      return false;
+    }
+
+    clearFieldError(field);
+    return true;
+  };
+
+  const validateForm = () => {
+    if (!contactForm) return false;
+    const fields = Array.from(contactForm.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input, textarea'));
+    return fields.map(validateField).every(Boolean);
+  };
+
+  contactForm?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input, textarea').forEach((field) => {
+    field.addEventListener('blur', () => validateField(field));
+    field.addEventListener('focus', clearStatus);
+    field.addEventListener('input', () => clearFieldError(field));
+  });
+
+  contactForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (formSubmitting || !contactForm || !submitButton) return;
+    if (!validateForm()) return;
+
+    const grecaptchaApi = window.grecaptcha;
+    if (!grecaptchaApi) {
+      showStatus('danger', 'Error: reCAPTCHA no está disponible. Por favor, recarga la página.');
+      return;
+    }
+
+    const recaptchaResponse = grecaptchaApi.getResponse();
+    if (!recaptchaResponse) {
+      showStatus('danger', 'Por favor, completa la verificación reCAPTCHA antes de enviar el mensaje.');
+      return;
+    }
+
+    const emailjsApi = window.emailjs;
+    if (!emailjsApi) {
+      showStatus('danger', 'Lo siento, el servicio de correos no está disponible. Por favor vuelve a intentarlo luego.');
+      return;
+    }
+
+    const publicKey = contactForm.dataset.emailjsPublicKey;
+    const serviceId = contactForm.dataset.emailjsServiceId;
+    const templateId = contactForm.dataset.emailjsTemplateId;
+
+    if (!publicKey || !serviceId || !templateId) {
+      showStatus('danger', 'Falta configuración de EmailJS para enviar el mensaje.');
+      return;
+    }
+
+    formSubmitting = true;
+    const originalText = submitButton.textContent ?? 'Enviar mensaje';
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+    showStatus('info', 'Enviando mensaje...');
+
+    const now = new Date();
+    const params = {
+      from_name: getField('name')?.value ?? '',
+      from_email: getField('email')?.value ?? '',
+      from_phone: getField('phone')?.value ?? '',
+      message: getField('message')?.value ?? '',
+      to_name: 'Eduardo Olivares',
+      date: now.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+      time: now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      'g-recaptcha-response': recaptchaResponse,
+    };
+
+    try {
+      emailjsApi.init(publicKey);
+      await emailjsApi.send(serviceId, templateId, params);
+      showStatus('success', 'Tu mensaje ha sido enviado.');
+      contactForm.reset();
+      grecaptchaApi.reset();
+    } catch {
+      const firstName = (getField('name')?.value ?? '').split(' ')[0] || 'usuario';
+      showStatus('danger', `Lo siento ${firstName}, al parecer el servidor de correos no está funcionando. Por favor vuelve a intentarlo luego!`);
+      grecaptchaApi.reset();
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+      formSubmitting = false;
+    }
+  });
+</script>
+
+<style>
+  .contact-section {
+    padding: 100px 0;
+    background-color: var(--color-surface-dark);
+    background-image: url("/images/map-image.png");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .container {
+    width: min(100% - 30px, 1140px);
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 15px;
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .section-header p {
+    margin: 0 0 75px;
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  .form-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .recaptcha-wrap {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .submit-wrap {
+    text-align: center;
+  }
+
+  .submit-button {
+    border: 1px solid var(--color-brand);
+    border-radius: 3px;
+    padding: 20px 40px;
+    background: var(--color-brand);
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .submit-button:hover,
+  .submit-button:focus {
+    border-color: var(--color-brand-strong);
+    background: var(--color-brand-strong);
+  }
+
+  .submit-button:disabled {
+    cursor: wait;
+    opacity: 0.75;
+  }
+
+  #success {
+    margin-bottom: 20px;
+    color: #28a745;
+    font-weight: 700;
+  }
+
+  :global(#success .alert-info) {
+    color: #cfe9ff;
+  }
+
+  :global(#success .alert-danger) {
+    color: #ffb5aa;
+  }
+
+  :global(#success .alert-success) {
+    color: #8be09f;
+  }
+
+  @media (min-width: 768px) {
+    .form-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .contact-section {
+      padding: 75px 0;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
+    .section-header p {
+      margin-bottom: 50px;
+      font-size: 14px;
+    }
+
+    .submit-button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global(.g-recaptcha > div) {
+      transform: scale(0.9);
+      transform-origin: left center;
+    }
+  }
+</style>

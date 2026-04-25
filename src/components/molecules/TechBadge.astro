@@ -1,0 +1,66 @@
+---
+import type { TechItem } from '../../data/experience';
+
+interface Props {
+  tech: TechItem;
+  size?: 'sm' | 'md';
+}
+
+const { tech, size = 'md' } = Astro.props;
+---
+
+<span class:list={['tech-badge', size]}>
+  {tech.icon && <img src={tech.icon} alt={tech.iconAlt ?? tech.name} loading="lazy" />}
+  <span>{tech.name}</span>
+</span>
+
+<style>
+  .tech-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: var(--color-surface);
+    color: #374151;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .tech-badge.md {
+    padding: 6px 12px;
+  }
+
+  .tech-badge.sm {
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #6c757d;
+    font-size: 11px;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  .sm img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .tech-badge:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-brand);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  }
+
+  .tech-badge.sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  }
+</style>
