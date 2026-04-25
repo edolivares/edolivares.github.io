@@ -109,7 +109,7 @@ Current sections found:
   - [x] `Button.astro`
   - [ ] `Icon.astro`
   - [x] `SectionHeading.astro`
-  - [ ] `SocialLink.astro`
+  - [x] `SocialLink.astro`
   - [ ] `TextInput.astro`
   - [ ] `Textarea.astro`
 - [ ] Molecules:
@@ -119,11 +119,12 @@ Current sections found:
   - [x] `PortfolioCard.astro`
   - [ ] `ModalHeader.astro`
   - [ ] `SkillIcon.astro`
+  - [x] `SocialLinks.astro`
 - [ ] Organisms:
   - [x] `Navbar.astro`
   - [x] `Hero.astro`
   - [x] `PortfolioSection.astro`
-  - [ ] `WhoAmISection.astro`
+  - [x] `WhoAmISection.astro`
   - [ ] `AboutTimeline.astro`
   - [ ] `ExperienceSection.astro`
   - [ ] `ContactForm.astro`

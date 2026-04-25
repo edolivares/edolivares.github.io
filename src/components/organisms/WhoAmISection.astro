@@ -1,0 +1,100 @@
+---
+import SocialLinks from '../molecules/SocialLinks.astro';
+import { profile } from '../../data/profile';
+---
+
+<section id="whoami" class="whoami-section" aria-labelledby="whoami-heading">
+  <div class="container">
+    <header class="section-header">
+      <h2 id="whoami-heading">¿Quién soy?</h2>
+    </header>
+
+    <article class="team-member">
+      <img src={profile.image} alt={profile.imageAlt} loading="lazy" />
+      <h3>{profile.name}</h3>
+      <p>{profile.degree}</p>
+      <p>{profile.role}</p>
+      <SocialLinks />
+    </article>
+
+    <p class="summary">{profile.summary}</p>
+  </div>
+</section>
+
+<style>
+  .whoami-section {
+    padding: 100px 0;
+    background: var(--color-surface);
+  }
+
+  .container {
+    width: min(100% - 30px, 1140px);
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 75px;
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .team-member {
+    text-align: center;
+  }
+
+  img {
+    width: 225px;
+    height: 225px;
+    margin: 0 auto 20px;
+    border: 7px solid rgb(0 0 0 / 0.1);
+    border-radius: var(--radius-full);
+    object-fit: cover;
+  }
+
+  h3 {
+    margin: 10px 0;
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .team-member p {
+    margin: 5px 0;
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-style: italic;
+  }
+
+  .summary {
+    max-width: 760px;
+    margin: var(--space-8) auto 0;
+    color: var(--color-muted);
+    font-size: 18px;
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    .whoami-section {
+      padding: 75px 0;
+    }
+
+    h2 {
+      margin-bottom: 50px;
+      font-size: 30px;
+    }
+
+    img {
+      width: 180px;
+      height: 180px;
+    }
+  }
+</style>
