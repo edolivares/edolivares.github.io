@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "atomic-design-atoms",
+  "owner": "thebushidocollective",
+  "repo": "han",
+  "path": "plugins/patterns/atomic-design/skills/atomic-design-atoms",
+  "branch": "main",
+  "sha": "fa857fa5bacfe7954bb7c27cdc8161c5532edd82",
+  "source": "manual"
+}

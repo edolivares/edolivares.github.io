@@ -1,27 +1,20 @@
 {
-  "name": "edolivares-portfolio",
-  "version": "2.0.0",
-  "description": "Portfolio profesional de Eduardo Olivares - Desarrollador Web Full Stack",
-  "main": "index.html",
+  "name": "edolivares.github.io",
+  "version": "3.0.0",
+  "description": "Portfolio profesional de Eduardo Olivares construido con Astro y Atomic Design",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "echo \"Servidor de desarrollo - Abrir index.html en navegador\"",
-    "build": "node build-config.js build",
-    "sass": "node build-config.js sass",
-    "bundle": "node build-config.js bundle",
-    "clean": "node build-config.js clean",
-    "minify": "node build-config.js minify",
-    "main": "node build-config.js main"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "keywords": [
     "portfolio",
-    "desarrollo-web",
+    "astro",
+    "atomic-design",
+    "github-pages",
     "full-stack",
-    "php",
-    "ruby-on-rails",
-    "chile",
-    "freelance",
-    "desarrollador"
+    "chile"
   ],
   "author": "Eduardo Olivares <edo.olivares@live.com>",
   "license": "MIT",
@@ -33,25 +26,11 @@
     "url": "https://github.com/edolivares/edolivares.github.io/issues"
   },
   "homepage": "https://edolivares.github.io",
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^6.4.0",
-    "bootstrap": "^5.3.0",
-    "sass": "^1.90.0",
-    "autoprefixer": "^10.4.20",
-    "cssnano": "^7.0.0",
-    "terser": "^5.29.0",
-    "rimraf": "^6.0.0",
-    "postcss": "^8.4.35",
-    "postcss-cli": "^11.0.0",
-    "concat": "^1.0.3",
-    "glob": "^10.3.10"
-  },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=24.0.0",
+    "npm": ">=10.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+  "devDependencies": {
+    "astro": "^5.0.0"
+  }
 }

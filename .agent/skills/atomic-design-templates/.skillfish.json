@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "atomic-design-templates",
+  "owner": "thebushidocollective",
+  "repo": "han",
+  "path": "plugins/patterns/atomic-design/skills/atomic-design-templates",
+  "branch": "main",
+  "sha": "28c618ee8c4881ae461f35d37cf379225f57cf73",
+  "source": "manual"
+}
