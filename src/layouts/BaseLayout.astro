@@ -4,11 +4,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
 }
 
 const {
-  title = 'Edo Olivares',
-  description = 'Portfolio profesional de Eduardo Olivares, desarrollador web full stack.',
+  title = 'Edo Olivares - Desarrollador Web',
+  description = 'Portafolio profesional de Eduardo Olivares - Desarrollador Web Full Stack',
+  keywords = 'desarrollo web, programador, freelance, PHP, Ruby on Rails, Chile',
 } = Astro.props;
 ---
 
@@ -16,8 +18,11 @@ const {
 <html lang="es">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="author" content="Eduardo Olivares" />
+    <meta name="keywords" content={keywords} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

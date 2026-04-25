@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PortfolioSection from '../components/organisms/PortfolioSection.astro';
 import PortfolioPageTemplate from '../components/templates/PortfolioPageTemplate.astro';
 ---
 
 <BaseLayout>
-  <PortfolioPageTemplate />
+  <PortfolioPageTemplate>
+    <PortfolioSection />
+  </PortfolioPageTemplate>
 </BaseLayout>

@@ -1,71 +1,11 @@
 ---
-import Button from '../atoms/Button.astro';
-import SectionHeading from '../atoms/SectionHeading.astro';
+import Hero from '../organisms/Hero.astro';
+import Navbar from '../organisms/Navbar.astro';
 ---
 
-<main class="migration-shell">
-  <section class="hero">
-    <p class="lead">Edo Olivares</p>
-    <h1>Migracion Astro en curso</h1>
-    <Button href="#migration-status" label="Ver estado" />
-  </section>
+<Navbar />
+<Hero />
 
-  <section id="migration-status" class="status">
-    <SectionHeading
-      title="Base Astro lista"
-      eyebrow="El contenido legacy esta preservado y sera migrado por secciones manteniendo paridad visual."
-    />
-    <ul>
-      <li>Legacy preservado en <code>legacy/</code>.</li>
-      <li>Estructura Atomic Design creada bajo <code>src/</code>.</li>
-      <li>Tokens iniciales creados en <code>src/quarks/</code>.</li>
-      <li>La proxima fase es migrar la pagina real desde <code>legacy/index.html</code>.</li>
-    </ul>
-  </section>
+<main>
+  <slot />
 </main>
-
-<style>
-  .migration-shell {
-    min-height: 100vh;
-  }
-
-  .hero {
-    display: grid;
-    min-height: 72vh;
-    place-items: center;
-    padding: var(--space-16) var(--space-6);
-    background:
-      linear-gradient(rgb(0 0 0 / 0.58), rgb(0 0 0 / 0.58)),
-      var(--color-ink);
-    color: var(--color-surface);
-    text-align: center;
-  }
-
-  .lead {
-    margin: 0 0 var(--space-4);
-    font-family: var(--font-accent);
-    font-size: clamp(2rem, 6vw, 3rem);
-  }
-
-  h1 {
-    margin: 0 0 var(--space-8);
-    font-family: var(--font-heading);
-    font-size: clamp(2.75rem, 8vw, 4.75rem);
-    line-height: 1.05;
-    text-transform: uppercase;
-  }
-
-  .status {
-    max-width: 64rem;
-    margin: 0 auto;
-    padding: var(--space-16) var(--space-6);
-  }
-
-  ul {
-    display: grid;
-    gap: var(--space-3);
-    margin: 0;
-    padding-left: var(--space-6);
-    color: var(--color-muted);
-  }
-</style>

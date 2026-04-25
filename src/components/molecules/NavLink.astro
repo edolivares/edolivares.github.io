@@ -1,0 +1,44 @@
+---
+interface Props {
+  href: string;
+  label: string;
+}
+
+const { href, label } = Astro.props;
+---
+
+<li role="none">
+  <a class="nav-link" href={href} role="menuitem">{label}</a>
+</li>
+
+<style>
+  .nav-link {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 15px 10px;
+    border: 0;
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 20px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    color: var(--color-brand);
+    outline: 0;
+  }
+
+  @media (min-width: 768px) {
+    .nav-link {
+      min-height: 50px;
+      padding: 15px 20px;
+      text-align: center;
+    }
+  }
+</style>

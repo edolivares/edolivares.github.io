@@ -60,7 +60,7 @@ Current sections found:
 - [x] Initialize Astro in the repo root.
 - [x] Configure `astro.config.mjs` for GitHub Pages.
 - [x] Confirm the correct `site` value: `https://edolivares.github.io`.
-- [ ] Configure static asset handling.
+- [x] Configure static asset handling.
 - [x] Clean `package.json` so scripts are Astro-only:
   - [x] `dev`
   - [x] `build`
@@ -79,8 +79,8 @@ Current sections found:
   - [x] `src/quarks/index.css`
 - [ ] Create component folders:
   - [x] `src/components/atoms/`
-  - [ ] `src/components/molecules/`
-  - [ ] `src/components/organisms/`
+  - [x] `src/components/molecules/`
+  - [x] `src/components/organisms/`
   - [x] `src/components/templates/`
 - [ ] Create route/page structure:
   - [x] `src/pages/index.astro`
@@ -92,7 +92,7 @@ Current sections found:
 ## Phase 4: First Visual Parity Pass
 
 - [ ] Rebuild the full current page in Astro with minimal behavior changes.
-- [ ] Copy images into Astro-compatible public/static paths.
+- [x] Copy images into Astro-compatible public/static paths.
 - [ ] Keep current section order and anchors:
   - [ ] `#portfolio`
   - [ ] `#whoami`
@@ -106,38 +106,38 @@ Current sections found:
 
 - [ ] Quarks: extract color, spacing, typography, border, shadow, and breakpoint tokens from legacy CSS.
 - [ ] Atoms:
-  - [ ] `Button.astro`
+  - [x] `Button.astro`
   - [ ] `Icon.astro`
-  - [ ] `SectionHeading.astro`
+  - [x] `SectionHeading.astro`
   - [ ] `SocialLink.astro`
   - [ ] `TextInput.astro`
   - [ ] `Textarea.astro`
 - [ ] Molecules:
-  - [ ] `NavLink.astro`
+  - [x] `NavLink.astro`
   - [ ] `FormField.astro`
   - [ ] `TimelineItem.astro`
-  - [ ] `PortfolioCard.astro`
+  - [x] `PortfolioCard.astro`
   - [ ] `ModalHeader.astro`
   - [ ] `SkillIcon.astro`
 - [ ] Organisms:
-  - [ ] `Navbar.astro`
-  - [ ] `Hero.astro`
-  - [ ] `PortfolioSection.astro`
+  - [x] `Navbar.astro`
+  - [x] `Hero.astro`
+  - [x] `PortfolioSection.astro`
   - [ ] `WhoAmISection.astro`
   - [ ] `AboutTimeline.astro`
   - [ ] `ExperienceSection.astro`
   - [ ] `ContactForm.astro`
   - [ ] `Footer.astro`
-  - [ ] `PortfolioModal.astro`
+  - [x] `PortfolioModal.astro`
   - [ ] `ExperienceModal.astro`
 - [ ] Templates:
-  - [ ] `PortfolioPageTemplate.astro`
+  - [x] `PortfolioPageTemplate.astro`
 
 ## Phase 6: JavaScript Behavior
 
-- [ ] Migrate navbar affix/scroll behavior from `header-behavior.js`.
+- [x] Migrate navbar affix/scroll behavior from `header-behavior.js`.
 - [ ] Migrate smooth scroll/page-scroll behavior.
-- [ ] Migrate responsive menu behavior.
+- [x] Migrate responsive menu behavior.
 - [ ] Migrate footer year behavior.
 - [ ] Migrate EmailJS contact flow.
 - [ ] Preserve reCAPTCHA loading and behavior.
@@ -167,9 +167,9 @@ Current sections found:
 - [ ] Compare Astro output against `legacy/index.html`.
 - [ ] Check image paths in `dist/`.
 - [ ] Check anchors and navigation.
-- [ ] Check navbar scroll/affix behavior.
-- [ ] Check responsive menu.
-- [ ] Check portfolio modals.
+- [x] Check navbar scroll/affix behavior.
+- [x] Check responsive menu.
+- [x] Check portfolio modals.
 - [ ] Check experience modals.
 - [ ] Check contact form UI and validation.
 - [ ] Check all external links.
@@ -180,5 +180,7 @@ Current sections found:
 - `AGENTS.md` still references `.agent/skills/atomic-design-planning/SKILL.md`, but the current detailed skills live under `.agent/skills/atomic-design-*`.
 - The current legacy page uses Bootstrap, FontAwesome, Google Fonts, EmailJS, reCAPTCHA, Google Analytics, and Simple Icons CDN assets.
 - The current project is designed to open via `file://`; the Astro version will use a build/preview workflow but still produce static GitHub Pages output.
-- Local validation currently runs under Node 22.19.0 even though the project targets Node 24. GitHub Actions is configured with Node 24.
+- Local validation now runs under Node 24.15.0 with npm 11.12.1. GitHub Actions is configured with Node 24.
 - Astro telemetry is disabled through `.env` to avoid filesystem writes outside the workspace during local builds.
+- `.env.example` documents `ASTRO_TELEMETRY_DISABLED=1`; local `.env` is intentionally kept but ignored by git.
+- Astro was upgraded from 5.18.1 to 6.1.9 early in the migration to avoid mixing a major framework upgrade with later visual parity work.
