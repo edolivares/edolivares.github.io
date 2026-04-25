@@ -1,5 +1,6 @@
 ---
 import type { SocialLink as SocialLinkData } from '../../data/profile';
+import Icon from './Icon.astro';
 
 interface Props {
   link: SocialLinkData;
@@ -16,7 +17,7 @@ const { link } = Astro.props;
   aria-label={link.ariaLabel}
   title={link.label}
 >
-  <span aria-hidden="true">{link.shortLabel}</span>
+  <Icon name={link.icon} />
 </a>
 
 <style>
@@ -28,9 +29,6 @@ const { link } = Astro.props;
     border-radius: var(--radius-full);
     background-color: var(--color-surface-dark);
     color: var(--color-surface);
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    font-weight: 700;
     line-height: 1;
     text-align: center;
     text-decoration: none;

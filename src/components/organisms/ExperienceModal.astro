@@ -99,8 +99,8 @@ const titleId = `${experience.id}Label`;
 
   .close-button {
     position: absolute;
-    top: var(--space-4);
-    right: var(--space-4);
+    top: var(--space-6);
+    right: var(--space-6);
     width: 2rem;
     height: 2rem;
     border: 0;
@@ -214,11 +214,11 @@ const titleId = `${experience.id}Label`;
 
   @media (max-width: 768px) {
     .modal {
-      padding: var(--space-3);
+      padding: var(--space-4) var(--space-3);
     }
 
     .modal-body {
-      padding: var(--space-6) var(--space-4);
+      padding: var(--space-16) var(--space-6) var(--space-8);
     }
 
     .experience-header,
@@ -226,8 +226,52 @@ const titleId = `${experience.id}Label`;
       padding: 0;
     }
 
+    .experience-header {
+      margin-bottom: var(--space-8);
+    }
+
     h2 {
-      font-size: 2rem;
+      font-size: clamp(1.65rem, 8vw, 2.15rem);
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .experience-header p {
+      margin-bottom: 0;
+    }
+
+    .experience-details section {
+      margin-bottom: var(--space-8);
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: var(--space-3);
+    }
+
+    .tech-stack {
+      gap: 10px;
+    }
+
+    footer {
+      text-align: center;
+    }
+
+    .project-close {
+      width: 100%;
+    }
+
+    .close-button {
+      top: var(--space-4);
+      right: var(--space-4);
     }
   }
 </style>

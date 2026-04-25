@@ -1,6 +1,6 @@
 export interface SocialLink {
   label: string;
-  shortLabel: string;
+  icon: 'twitter' | 'facebook' | 'linkedin' | 'github';
   href: string;
   ariaLabel: string;
 }
@@ -12,31 +12,31 @@ export const profile = {
   degree: 'Ingeniero en Informática',
   role: 'Full Stack Developer',
   summary:
-    'Actualmente formo parte de una empresa de desarrollo de software educativo, donde canalizo mi experiencia y entusiasmo en crear soluciones que aporten valor real. Disfruto trabajar en equipo porque potencia el aprendizaje, impulsa la innovación y convierte cada proyecto en una oportunidad para crecer. Me motivan los desafíos que invitan a explorar nuevas ideas y tecnologías para transformar procesos y dar vida a propuestas creativas.',
+    'Soy ingeniero en informática y Full Stack Developer con experiencia construyendo aplicaciones web, APIs, intranets, integraciones y soluciones digitales para distintos contextos de negocio. Actualmente trabajo en software educativo, combinando desarrollo, arquitectura, optimización y colaboración con equipos multidisciplinarios. Me motivan los proyectos donde la tecnología resuelve problemas reales, mejora procesos y abre espacio para crear productos útiles, mantenibles y con impacto.',
 };
 
 export const socialLinks: SocialLink[] = [
   {
     label: 'Twitter',
-    shortLabel: 'Tw',
+    icon: 'twitter',
     href: 'https://twitter.com/EdoOlivares',
     ariaLabel: 'Perfil de Twitter',
   },
   {
     label: 'Facebook',
-    shortLabel: 'Fb',
+    icon: 'facebook',
     href: 'https://www.facebook.com/edo.olivares.o',
     ariaLabel: 'Perfil de Facebook',
   },
   {
     label: 'LinkedIn',
-    shortLabel: 'In',
+    icon: 'linkedin',
     href: 'https://www.linkedin.com/in/edoolivares',
     ariaLabel: 'Perfil de LinkedIn',
   },
   {
     label: 'GitHub',
-    shortLabel: 'Gh',
+    icon: 'github',
     href: 'https://github.com/edolivares',
     ariaLabel: 'Perfil de GitHub',
   },

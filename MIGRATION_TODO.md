@@ -22,12 +22,12 @@ Migration goal: rebuild this GitHub Pages portfolio as an Astro static site whil
 
 ## Phase 0: Legacy Inventory
 
-- [ ] Document the current page sections from `index.html`.
-- [ ] Inventory current CSS sources in `assets/css/`.
-- [ ] Inventory current JavaScript behavior in `assets/js/`.
-- [ ] Inventory image assets from `assets/images/`.
-- [ ] Inventory third-party dependencies currently loaded from `vendor/` and CDNs.
-- [ ] Check external links for `https://` and `rel="noopener noreferrer"`.
+- [x] Document the current page sections from `index.html`.
+- [x] Inventory current CSS sources in `assets/css/`.
+- [x] Inventory current JavaScript behavior in `assets/js/`.
+- [x] Inventory image assets from `assets/images/`.
+- [x] Inventory third-party dependencies currently loaded from `vendor/` and CDNs.
+- [x] Check external links for `https://` and `rel="noopener noreferrer"`.
 
 Current sections found:
 
@@ -45,7 +45,7 @@ Current sections found:
 ## Phase 1: Preserve Legacy
 
 - [x] Create `legacy/`.
-- [ ] Move current legacy runtime files into `legacy/`:
+- [x] Move current legacy runtime files into `legacy/`:
   - [x] `index.html`
   - [x] `assets/`
   - [x] `scss/`
@@ -53,7 +53,7 @@ Current sections found:
   - [x] `build-config.js`
   - [x] `gulpfile.js`
   - [x] old lockfile/package metadata if replaced by Astro
-- [ ] Keep enough history in git so every migrated section can be compared against legacy.
+- [x] Keep enough history in git so every migrated section can be compared against legacy.
 
 ## Phase 2: Astro Foundation
 
@@ -70,44 +70,44 @@ Current sections found:
 
 ## Phase 3: Atomic Design Structure
 
-- [ ] Create design token layer:
+- [x] Create design token layer:
   - [x] `src/quarks/colors.css`
   - [x] `src/quarks/spacing.css`
   - [x] `src/quarks/typography.css`
   - [x] `src/quarks/borders.css`
   - [x] `src/quarks/shadows.css`
   - [x] `src/quarks/index.css`
-- [ ] Create component folders:
+- [x] Create component folders:
   - [x] `src/components/atoms/`
   - [x] `src/components/molecules/`
   - [x] `src/components/organisms/`
   - [x] `src/components/templates/`
-- [ ] Create route/page structure:
+- [x] Create route/page structure:
   - [x] `src/pages/index.astro`
   - [x] `src/layouts/BaseLayout.astro`
-- [ ] Decide how to represent migrated static content:
-  - [ ] Inline Astro props for the first pass.
-  - [ ] Extract to `src/content/` or `src/data/` after the first visual parity pass if useful.
+- [x] Decide how to represent migrated static content:
+  - [x] Inline Astro props for the first pass.
+  - [x] Extract to `src/content/` or `src/data/` after the first visual parity pass if useful.
 
 ## Phase 4: First Visual Parity Pass
 
-- [ ] Rebuild the full current page in Astro with minimal behavior changes.
+- [x] Rebuild the full current page in Astro with minimal behavior changes.
 - [x] Copy images into Astro-compatible public/static paths.
-- [ ] Keep current section order and anchors:
-  - [ ] `#portfolio`
-  - [ ] `#whoami`
-  - [ ] `#about`
-  - [ ] `#experience`
-  - [ ] `#contact`
-- [ ] Preserve Bootstrap-dependent layout behavior or replace it intentionally with equivalent scoped CSS.
-- [ ] Preserve FontAwesome/simple icon usage or migrate to a stable Astro-friendly icon strategy.
+- [x] Keep current section order and anchors:
+  - [x] `#portfolio`
+  - [x] `#whoami`
+  - [x] `#about`
+  - [x] `#experience`
+  - [x] `#contact`
+- [x] Preserve Bootstrap-dependent layout behavior or replace it intentionally with equivalent scoped CSS.
+- [x] Preserve FontAwesome/simple icon usage or migrate to a stable Astro-friendly icon strategy.
 
 ## Phase 5: Component Migration
 
-- [ ] Quarks: extract color, spacing, typography, border, shadow, and breakpoint tokens from legacy CSS.
+- [x] Quarks: extract color, spacing, typography, border, shadow, and breakpoint tokens from legacy CSS.
 - [ ] Atoms:
   - [x] `Button.astro`
-  - [ ] `Icon.astro`
+  - [x] `Icon.astro`
   - [x] `SectionHeading.astro`
   - [x] `SocialLink.astro`
   - [ ] `TextInput.astro`
@@ -139,19 +139,19 @@ Current sections found:
 ## Phase 6: JavaScript Behavior
 
 - [x] Migrate navbar affix/scroll behavior from `header-behavior.js`.
-- [ ] Migrate smooth scroll/page-scroll behavior.
+- [x] Migrate smooth scroll/page-scroll behavior.
 - [x] Migrate responsive menu behavior.
 - [x] Migrate footer year behavior.
 - [x] Migrate EmailJS contact flow.
 - [x] Preserve reCAPTCHA loading and behavior.
-- [ ] Remove dead/minified legacy bundles once their behavior is represented in Astro.
+- [x] Remove dead/minified legacy bundles once their behavior is represented in Astro.
 
 ## Phase 7: Scoped CSS Cleanup
 
-- [ ] Move section styles from global CSS into component `<style>` blocks or component-local CSS.
-- [ ] Keep only true global resets/base styles in a global stylesheet.
-- [ ] Remove unused Bootstrap classes once replaced.
-- [ ] Remove unused legacy CSS after visual parity is confirmed.
+- [x] Move section styles from global CSS into component `<style>` blocks or component-local CSS.
+- [x] Keep only true global resets/base styles in a global stylesheet.
+- [x] Remove unused Bootstrap classes once replaced.
+- [x] Remove unused legacy CSS after visual parity is confirmed.
 - [ ] Verify mobile, tablet, and desktop layouts after each section migration.
 
 ## Phase 8: CI/CD for GitHub Pages
@@ -168,19 +168,20 @@ Current sections found:
 - [x] Run `npm run build`.
 - [ ] Run `npm run preview` and inspect locally.
 - [ ] Compare Astro output against `legacy/index.html`.
-- [ ] Check image paths in `dist/`.
-- [ ] Check anchors and navigation.
+- [x] Check image paths in `dist/`.
+- [x] Check anchors and navigation.
 - [x] Check navbar scroll/affix behavior.
 - [x] Check responsive menu.
 - [x] Check portfolio modals.
 - [x] Check experience modals.
 - [x] Check contact form UI and validation.
-- [ ] Check all external links.
+- [x] Check all external links.
+- [x] Add SEO metadata, canonical URL, social preview tags, and structured data.
 - [ ] Confirm GitHub Pages deployment succeeds.
 
 ## Known Notes
 
-- `AGENTS.md` still references `.agent/skills/atomic-design-planning/SKILL.md`, but the current detailed skills live under `.agent/skills/atomic-design-*`.
+- `AGENTS.md` now references the current detailed skills under `.agent/skills/atomic-design-*`.
 - The current legacy page uses Bootstrap, FontAwesome, Google Fonts, EmailJS, reCAPTCHA, Google Analytics, and Simple Icons CDN assets.
 - The current project is designed to open via `file://`; the Astro version will use a build/preview workflow but still produce static GitHub Pages output.
 - Local validation now runs under Node 24.15.0 with npm 11.12.1. GitHub Actions is configured with Node 24.
