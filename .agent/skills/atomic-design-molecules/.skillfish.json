@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "atomic-design-molecules",
+  "owner": "thebushidocollective",
+  "repo": "han",
+  "path": "plugins/patterns/atomic-design/skills/atomic-design-molecules",
+  "branch": "main",
+  "sha": "13c27b582d2159593330eef8c5f0f704daf5698d",
+  "source": "manual"
+}

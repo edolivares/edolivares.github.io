@@ -1,0 +1,160 @@
+---
+import ExperienceCard from '../molecules/ExperienceCard.astro';
+import ExperienceModal from './ExperienceModal.astro';
+import { experiences } from '../../data/experience';
+---
+
+<section id="experience" class="experience-section" aria-labelledby="experience-heading">
+  <div class="container">
+    <header class="section-header">
+      <h2 id="experience-heading">Experiencia Profesional</h2>
+      <p>Mi trayectoria laboral en desarrollo de software.</p>
+    </header>
+
+    <div class="experience-list">
+      {experiences.map((experience) => <ExperienceCard experience={experience} />)}
+    </div>
+  </div>
+</section>
+
+{experiences.map((experience) => <ExperienceModal experience={experience} />)}
+
+<script>
+  const experienceTriggers = document.querySelectorAll('[data-experience-open]');
+  const experienceCloseButtons = document.querySelectorAll('[data-experience-close]');
+  const experienceModals = document.querySelectorAll('[data-experience-modal]');
+  let activeExperienceModal: HTMLElement | null = null;
+
+  const getExperienceModal = (modalId: string) => {
+    const modal = document.getElementById(modalId);
+
+    if (!(modal instanceof HTMLElement) || !modal.hasAttribute('data-experience-modal')) {
+      return null;
+    }
+
+    return modal;
+  };
+
+  const closeExperienceModal = () => {
+    if (!activeExperienceModal) return;
+
+    activeExperienceModal.classList.remove('is-open');
+    activeExperienceModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('has-open-modal');
+
+    if (window.location.hash === `#${activeExperienceModal.id}`) {
+      history.pushState('', document.title, window.location.pathname + window.location.search);
+    }
+
+    activeExperienceModal = null;
+  };
+
+  const openExperienceModal = (modalId: string) => {
+    const modal = getExperienceModal(modalId);
+    if (!modal) return;
+
+    closeExperienceModal();
+    activeExperienceModal = modal;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('has-open-modal');
+    modal.focus();
+  };
+
+  experienceTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const modalId = trigger.getAttribute('data-experience-open');
+      if (!modalId) return;
+      history.pushState(null, '', `#${modalId}`);
+      openExperienceModal(modalId);
+    });
+  });
+
+  experienceCloseButtons.forEach((button) => {
+    button.addEventListener('click', closeExperienceModal);
+  });
+
+  experienceModals.forEach((modal) => {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeExperienceModal();
+      }
+    });
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeExperienceModal();
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+    const modalId = window.location.hash.slice(1);
+    if (!modalId) {
+      closeExperienceModal();
+      return;
+    }
+
+    if (!getExperienceModal(modalId)) {
+      closeExperienceModal();
+      return;
+    }
+
+    openExperienceModal(modalId);
+  });
+
+  const initialModalId = window.location.hash.slice(1);
+  if (initialModalId && getExperienceModal(initialModalId)) {
+    openExperienceModal(initialModalId);
+  }
+</script>
+
+<style>
+  .experience-section {
+    padding: 100px 0;
+    background: #f8f9fa;
+  }
+
+  .container {
+    width: min(100% - 30px, 1140px);
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 15px;
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .section-header p {
+    margin: 0 0 75px;
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+  }
+
+  @media (max-width: 767px) {
+    .experience-section {
+      padding: 75px 0;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
+    .section-header p {
+      margin-bottom: 50px;
+      font-size: 14px;
+    }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+import type { SocialLink as SocialLinkData } from '../../data/profile';
+import Icon from './Icon.astro';
+
+interface Props {
+  link: SocialLinkData;
+}
+
+const { link } = Astro.props;
+---
+
+<a
+  class="social-link"
+  target="_blank"
+  rel="noopener noreferrer"
+  href={link.href}
+  aria-label={link.ariaLabel}
+  title={link.label}
+>
+  <Icon name={link.icon} />
+</a>
+
+<style>
+  .social-link {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-dark);
+    color: var(--color-surface);
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .social-link:hover,
+  .social-link:focus,
+  .social-link:active {
+    background-color: var(--color-brand);
+    color: var(--color-surface);
+    outline: none;
+    transform: scale(1.1);
+  }
+</style>

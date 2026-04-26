@@ -1,0 +1,32 @@
+---
+import SocialLink from '../atoms/SocialLink.astro';
+import { socialLinks } from '../../data/profile';
+---
+
+<nav class="social-links" aria-label="Enlaces a redes sociales">
+  <ul>
+    {socialLinks.map((link) => <li><SocialLink link={link} /></li>)}
+  </ul>
+</nav>
+
+<style>
+  .social-links {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0;
+  }
+</style>

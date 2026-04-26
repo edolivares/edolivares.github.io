@@ -1,0 +1,24 @@
+---
+import AboutTimeline from '../components/organisms/AboutTimeline.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/organisms/ContactForm.astro';
+import ExperienceSection from '../components/organisms/ExperienceSection.astro';
+import Footer from '../components/organisms/Footer.astro';
+import PortfolioSection from '../components/organisms/PortfolioSection.astro';
+import PortfolioPageTemplate from '../components/templates/PortfolioPageTemplate.astro';
+import WhoAmISection from '../components/organisms/WhoAmISection.astro';
+---
+
+<BaseLayout
+  title="Eduardo Olivares | Full Stack Developer"
+  description="Soy Eduardo Olivares, ingeniero en informática y Full Stack Developer. Construyo aplicaciones web, APIs, intranets e integraciones con Laravel, Vue.js, React, .NET, Node.js y tecnologías cloud."
+>
+  <PortfolioPageTemplate>
+    <PortfolioSection />
+    <WhoAmISection />
+    <AboutTimeline />
+    <ExperienceSection />
+    <ContactForm />
+  </PortfolioPageTemplate>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,131 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = 'Eduardo Olivares | Full Stack Developer en Chile',
+  description = 'Soy Eduardo Olivares, ingeniero en informática y Full Stack Developer. Construyo aplicaciones web, APIs, intranets e integraciones con Laravel, Vue, React, .NET, Node.js y tecnologías cloud.',
+  keywords = 'Eduardo Olivares, Full Stack Developer, ingeniero en informática, Laravel, Vue.js, React, .NET, Node.js, PHP, JavaScript, Unity, AWS, Azure, Cloudflare, Docker, MySQL, CodeIgniter, Ruby on Rails, APIs REST, CI/CD, software educativo',
+  image = '/images/header-bg.jpg',
+  canonicalPath = '/',
+} = Astro.props;
+
+const siteUrl = Astro.site ?? Astro.url;
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
+const siteName = 'Portafolio de Eduardo Olivares';
+const googleSiteVerification =
+  import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ??
+  'jwYKeGuxUq_VHW9Y1ap8KnGQpJFH3qVzi7BPJJNcrlU';
+const sameAs = [
+  'https://twitter.com/EdoOlivares',
+  'https://www.facebook.com/edo.olivares.o',
+  'https://www.linkedin.com/in/edoolivares',
+  'https://github.com/edolivares',
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Eduardo Olivares',
+  alternateName: 'Edo Olivares',
+  jobTitle: 'Full Stack Developer',
+  description,
+  url: canonicalUrl,
+  image: imageUrl,
+  sameAs,
+  knowsAbout: [
+    'Desarrollo web',
+    'Desarrollo full stack',
+    'Aplicaciones web',
+    'APIs REST',
+    'Arquitectura de bases de datos',
+    'Intranets empresariales',
+    'Integraciones web',
+    'HTML5',
+    'CSS',
+    'JavaScript',
+    'Laravel',
+    'Vue.js',
+    'React',
+    'Unity',
+    '.NET',
+    'Node.js',
+    'PHP',
+    'CodeIgniter',
+    'Ruby on Rails',
+    'MySQL',
+    'AWS',
+    'Microsoft Azure',
+    'Cloudflare',
+    'Docker',
+    'Git',
+    'GitHub',
+    'CI/CD',
+    'Testing',
+    'Machine learning',
+    'WordPress',
+    'Prestashop',
+    'Webpay',
+    'Mercado Pago',
+    'Software educativo',
+    'Cloud computing',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Eduardo Olivares" />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#222222" />
+    <meta name="generator" content={Astro.generator} />
+    {
+      googleSiteVerification && (
+        <meta name="google-site-verification" content={googleSiteVerification} />
+      )
+    }
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1900" />
+    <meta property="og:image:height" content="988" />
+    <meta
+      property="og:image:alt"
+      content="Banner principal del portafolio de Eduardo Olivares"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@EdoOlivares" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Kaushan+Script|Droid+Serif:400,700,400italic,700italic|Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

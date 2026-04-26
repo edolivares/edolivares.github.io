@@ -1,0 +1,36 @@
+---
+interface Props {
+  href?: string;
+  label: string;
+}
+
+const { href, label } = Astro.props;
+const Element = href ? 'a' : 'button';
+---
+
+<Element class="button" href={href}>
+  {label}
+</Element>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0 var(--space-6);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-brand);
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .button:hover {
+    background: var(--color-brand-strong);
+  }
+</style>

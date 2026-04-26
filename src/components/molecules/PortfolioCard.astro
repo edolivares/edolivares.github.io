@@ -1,0 +1,114 @@
+---
+import type { PortfolioProject } from '../../data/portfolio';
+
+interface Props {
+  project: PortfolioProject;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="portfolio-item">
+  <a
+    href={`#${project.id}`}
+    class="portfolio-link"
+    aria-label={project.detailsLabel}
+    data-modal-open={project.id}
+  >
+    <span class="portfolio-hover" aria-hidden="true">
+      <span class="portfolio-hover-content"></span>
+    </span>
+    <img src={project.thumbnail} alt={project.alt} loading="lazy" />
+  </a>
+  <div class="portfolio-caption">
+    <h3>{project.title}</h3>
+    <p>{project.category}</p>
+  </div>
+</article>
+
+<style>
+  .portfolio-item {
+    margin-bottom: 30px;
+  }
+
+  .portfolio-link {
+    position: relative;
+    display: block;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .portfolio-hover {
+    position: absolute;
+    inset: 0;
+    background: rgb(73 162 231 / 0.9);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .portfolio-link:hover .portfolio-hover,
+  .portfolio-link:focus .portfolio-hover {
+    opacity: 1;
+  }
+
+  .portfolio-hover-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3rem;
+    height: 3rem;
+    transform: translate(-50%, -50%);
+    color: var(--color-surface);
+  }
+
+  .portfolio-hover-content::before,
+  .portfolio-hover-content::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3rem;
+    height: 0.25rem;
+    border-radius: var(--radius-full);
+    background: currentColor;
+    content: "";
+  }
+
+  .portfolio-hover-content::before {
+    transform: translate(-50%, -50%);
+  }
+
+  .portfolio-hover-content::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .portfolio-caption {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--color-surface);
+    text-align: center;
+  }
+
+  h3 {
+    display: block;
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: none;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-style: italic;
+  }
+</style>

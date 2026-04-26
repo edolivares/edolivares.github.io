@@ -1,0 +1,277 @@
+---
+import type { ExperienceItem } from '../../data/experience';
+import TechBadge from '../molecules/TechBadge.astro';
+
+interface Props {
+  experience: ExperienceItem;
+}
+
+const { experience } = Astro.props;
+const titleId = `${experience.id}Label`;
+---
+
+<div
+  class="modal"
+  id={experience.id}
+  role="dialog"
+  aria-labelledby={titleId}
+  aria-modal="true"
+  aria-hidden="true"
+  tabindex="-1"
+  data-experience-modal
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button class="close-button" type="button" aria-label="Cerrar modal" data-experience-close></button>
+
+      <div class="modal-body">
+        <header class="experience-header">
+          <h2 id={titleId}>{experience.company}</h2>
+          <h3>{experience.title}</h3>
+          <p>{experience.period}</p>
+        </header>
+
+        <div class="experience-details">
+          <section>
+            <h4>Responsabilidades Principales</h4>
+            <ul>
+              {experience.responsibilities.map((responsibility) => <li>{responsibility}</li>)}
+            </ul>
+          </section>
+
+          <section>
+            <h4>Tecnologías Utilizadas</h4>
+            <div class="tech-stack">
+              {experience.technologies.map((tech) => <TechBadge tech={tech} />)}
+            </div>
+          </section>
+
+          {
+            experience.achievements && (
+              <section>
+                <h4>Logros Destacados</h4>
+                <ul>
+                  {experience.achievements.map((achievement) => <li>{achievement}</li>)}
+                </ul>
+              </section>
+            )
+          }
+        </div>
+
+        <footer>
+          <button type="button" class="project-close" data-experience-close>Cerrar</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: var(--space-6);
+    background: rgb(0 0 0 / 0.55);
+  }
+
+  .modal.is-open {
+    display: block;
+  }
+
+  .modal-dialog {
+    width: min(100%, 800px);
+    min-height: calc(100vh - var(--space-12));
+    margin: 0 auto;
+  }
+
+  .modal-content {
+    position: relative;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    background: var(--color-surface);
+    box-shadow: none;
+  }
+
+  .close-button {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    background: transparent;
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+
+  .close-button::before,
+  .close-button::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5rem;
+    height: 2px;
+    border-radius: var(--radius-full);
+    background: currentColor;
+    content: "";
+  }
+
+  .close-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .close-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .modal-body {
+    padding: 30px;
+  }
+
+  .experience-header {
+    padding: 0 30px;
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    color: var(--color-ink);
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 0 0 15px;
+    color: var(--color-brand);
+    font-family: var(--font-heading);
+    font-size: 20px;
+  }
+
+  .experience-header p {
+    margin: 0 0 20px;
+    color: #6c757d;
+    font-size: 16px;
+  }
+
+  .experience-details section {
+    margin-bottom: 25px;
+    padding: 0 30px;
+  }
+
+  h4 {
+    margin: 0 0 15px;
+    color: var(--color-ink);
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  ul {
+    margin: 0 0 20px;
+    padding-left: 20px;
+    color: #555555;
+    line-height: 1.8;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  footer {
+    text-align: right;
+  }
+
+  .project-close {
+    border: 1px solid var(--color-brand);
+    border-radius: var(--radius-sm);
+    padding: 10px 20px;
+    background: var(--color-brand);
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .project-close:hover,
+  .project-close:focus {
+    border-color: var(--color-brand-strong);
+    background: var(--color-brand-strong);
+  }
+
+  @media (max-width: 768px) {
+    .modal {
+      padding: var(--space-4) var(--space-3);
+    }
+
+    .modal-body {
+      padding: var(--space-16) var(--space-6) var(--space-8);
+    }
+
+    .experience-header,
+    .experience-details section {
+      padding: 0;
+    }
+
+    .experience-header {
+      margin-bottom: var(--space-8);
+    }
+
+    h2 {
+      font-size: clamp(1.65rem, 8vw, 2.15rem);
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .experience-header p {
+      margin-bottom: 0;
+    }
+
+    .experience-details section {
+      margin-bottom: var(--space-8);
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: var(--space-3);
+    }
+
+    .tech-stack {
+      gap: 10px;
+    }
+
+    footer {
+      text-align: center;
+    }
+
+    .project-close {
+      width: 100%;
+    }
+
+    .close-button {
+      top: var(--space-4);
+      right: var(--space-4);
+    }
+  }
+</style>

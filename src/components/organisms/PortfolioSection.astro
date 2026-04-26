@@ -1,0 +1,185 @@
+---
+import PortfolioCard from '../molecules/PortfolioCard.astro';
+import PortfolioModal from './PortfolioModal.astro';
+import { portfolioProjects } from '../../data/portfolio';
+---
+
+<section id="portfolio" class="portfolio-section" aria-labelledby="portfolio-heading">
+  <div class="container">
+    <header class="section-header">
+      <h2 id="portfolio-heading">Portafolio</h2>
+      <p>Proyectos en los que he trabajado solo o junto a colegas.</p>
+    </header>
+
+    <div class="portfolio-grid">
+      {portfolioProjects.map((project) => <PortfolioCard project={project} />)}
+    </div>
+  </div>
+</section>
+
+{portfolioProjects.map((project) => <PortfolioModal project={project} />)}
+
+<script>
+  const modalTriggers = document.querySelectorAll('[data-modal-open]');
+  const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
+  const modals = document.querySelectorAll('[data-portfolio-modal]');
+  let activeModal: HTMLElement | null = null;
+
+  const getPortfolioModal = (modalId: string) => {
+    const modal = document.getElementById(modalId);
+
+    if (!(modal instanceof HTMLElement) || !modal.hasAttribute('data-portfolio-modal')) {
+      return null;
+    }
+
+    return modal;
+  };
+
+  const closeModal = () => {
+    if (!activeModal) return;
+
+    activeModal.classList.remove('is-open');
+    activeModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('has-open-modal');
+
+    if (window.location.hash === `#${activeModal.id}`) {
+      history.pushState('', document.title, window.location.pathname + window.location.search);
+    }
+
+    activeModal = null;
+  };
+
+  const openModal = (modalId: string) => {
+    const modal = getPortfolioModal(modalId);
+    if (!modal) return;
+
+    closeModal();
+    activeModal = modal;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('has-open-modal');
+    modal.focus();
+  };
+
+  modalTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modalId = trigger.getAttribute('data-modal-open');
+      if (!modalId) return;
+      history.pushState(null, '', `#${modalId}`);
+      openModal(modalId);
+    });
+  });
+
+  modalCloseButtons.forEach((button) => {
+    button.addEventListener('click', closeModal);
+  });
+
+  modals.forEach((modal) => {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+    const modalId = window.location.hash.slice(1);
+    if (!modalId) {
+      closeModal();
+      return;
+    }
+
+    if (!getPortfolioModal(modalId)) {
+      closeModal();
+      return;
+    }
+
+    openModal(modalId);
+  });
+
+  const initialModalId = window.location.hash.slice(1);
+  if (initialModalId && getPortfolioModal(initialModalId)) {
+    openModal(initialModalId);
+  }
+</script>
+
+<style>
+  .portfolio-section {
+    padding: 100px 0;
+    background: var(--color-surface-alt);
+  }
+
+  .container {
+    width: min(100% - 30px, 1140px);
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 15px;
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .section-header p {
+    margin: 0 0 75px;
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 30px;
+  }
+
+  @media (min-width: 576px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .portfolio-section {
+      padding: 75px 0;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
+    .section-header p {
+      margin-bottom: 50px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+<style is:global>
+  body.has-open-modal {
+    overflow: hidden;
+  }
+</style>

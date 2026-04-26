@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "atomic-design-integration",
+  "owner": "thebushidocollective",
+  "repo": "han",
+  "path": "plugins/patterns/atomic-design/skills/atomic-design-integration",
+  "branch": "main",
+  "sha": "a3ea7c16cbdb599ffa35266eca6ece12d9843823",
+  "source": "manual"
+}
