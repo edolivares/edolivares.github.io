@@ -105,24 +105,24 @@ Current sections found:
 ## Phase 5: Component Migration
 
 - [x] Quarks: extract color, spacing, typography, border, shadow, and breakpoint tokens from legacy CSS.
-- [ ] Atoms:
+- [x] Atoms:
   - [x] `Button.astro`
   - [x] `Icon.astro`
   - [x] `SectionHeading.astro`
   - [x] `SocialLink.astro`
-  - [ ] `TextInput.astro`
-  - [ ] `Textarea.astro`
-- [ ] Molecules:
+  - [x] `TextInput.astro` not extracted; current scope is covered by `FormField.astro`.
+  - [x] `Textarea.astro` not extracted; current scope is covered by `FormField.astro`.
+- [x] Molecules:
   - [x] `NavLink.astro`
   - [x] `FormField.astro`
   - [x] `TimelineItem.astro`
   - [x] `PortfolioCard.astro`
-  - [ ] `ModalHeader.astro`
-  - [ ] `SkillIcon.astro`
+  - [x] `ModalHeader.astro` not extracted; modal headers remain organism-specific.
+  - [x] `SkillIcon.astro` not extracted; current scope is covered by `TechBadge.astro`.
   - [x] `SocialLinks.astro`
   - [x] `ExperienceCard.astro`
   - [x] `TechBadge.astro`
-- [ ] Organisms:
+- [x] Organisms:
   - [x] `Navbar.astro`
   - [x] `Hero.astro`
   - [x] `PortfolioSection.astro`
@@ -133,7 +133,7 @@ Current sections found:
   - [x] `Footer.astro`
   - [x] `PortfolioModal.astro`
   - [x] `ExperienceModal.astro`
-- [ ] Templates:
+- [x] Templates:
   - [x] `PortfolioPageTemplate.astro`
 
 ## Phase 6: JavaScript Behavior
@@ -152,7 +152,7 @@ Current sections found:
 - [x] Keep only true global resets/base styles in a global stylesheet.
 - [x] Remove unused Bootstrap classes once replaced.
 - [x] Remove unused legacy CSS after visual parity is confirmed.
-- [ ] Verify mobile, tablet, and desktop layouts after each section migration.
+- [x] Verify mobile, tablet, and desktop layouts after each section migration.
 
 ## Phase 8: CI/CD for GitHub Pages
 
@@ -166,8 +166,8 @@ Current sections found:
 ## Phase 9: Verification
 
 - [x] Run `npm run build`.
-- [ ] Run `npm run preview` and inspect locally.
-- [ ] Compare Astro output against `legacy/index.html`.
+- [x] Run `npm run preview` and inspect locally.
+- [x] Compare Astro output against `legacy/index.html`.
 - [x] Check image paths in `dist/`.
 - [x] Check anchors and navigation.
 - [x] Check navbar scroll/affix behavior.
@@ -182,9 +182,11 @@ Current sections found:
 ## Known Notes
 
 - `AGENTS.md` now references the current detailed skills under `.agent/skills/atomic-design-*`.
-- The current legacy page uses Bootstrap, FontAwesome, Google Fonts, EmailJS, reCAPTCHA, Google Analytics, and Simple Icons CDN assets.
+- The current legacy page uses Bootstrap, FontAwesome, Google Fonts, EmailJS, reCAPTCHA, and Simple Icons CDN assets.
 - The current project is designed to open via `file://`; the Astro version will use a build/preview workflow but still produce static GitHub Pages output.
 - Local validation now runs under Node 24.15.0 with npm 11.12.1. GitHub Actions is configured with Node 24.
 - Astro telemetry is disabled through `.env` to avoid filesystem writes outside the workspace during local builds.
 - `.env.example` documents `ASTRO_TELEMETRY_DISABLED=1`; local `.env` is intentionally kept but ignored by git.
 - Astro was upgraded from 5.18.1 to 6.1.9 early in the migration to avoid mixing a major framework upgrade with later visual parity work.
+- Legacy used a Universal Analytics `UA-*` ID. Google Analytics is intentionally not migrated; Search Console is used for search visibility instead.
+- `TextInput.astro`, `Textarea.astro`, `ModalHeader.astro`, and `SkillIcon.astro` remain optional architecture extractions. The current migrated UI is already covered by `FormField.astro`, `TechBadge.astro`, and modal-specific organisms.
