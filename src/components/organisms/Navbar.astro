@@ -48,8 +48,27 @@ const links = [
     toggle.setAttribute('aria-expanded', String(isOpen));
   });
 
-  document.querySelectorAll('#mainNav a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', () => {
+  const cleanUrlHash = () => {
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+  };
+
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const hash = link.hash;
+      const target = hash ? document.getElementById(hash.slice(1)) : null;
+
+      if (
+        target &&
+        !target.hasAttribute('data-portfolio-modal') &&
+        !target.hasAttribute('data-experience-modal') &&
+        !link.hasAttribute('data-modal-open') &&
+        !link.hasAttribute('data-experience-open')
+      ) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        cleanUrlHash();
+      }
+
       nav?.classList.remove('is-open');
       toggle?.setAttribute('aria-expanded', 'false');
     });
